@@ -1,0 +1,14 @@
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\bin\Debug\ProductRequestApp.exe.config
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\bin\Debug\ProductRequestApp.exe
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\bin\Debug\ProductRequestApp.pdb
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\bin\Debug\ProductRequestApp.xml
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.vbprojResolveAssemblyReference.cache
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.vbproj.ResolveComReference.cache
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.Resources.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.vbproj.GenerateResource.Cache
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.exe
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.xml
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.pdb
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.FormMenu.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.FormRBAC.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.FormUser.resources
