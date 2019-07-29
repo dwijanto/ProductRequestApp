@@ -924,7 +924,14 @@ Public Class DbManager
         Return True
     End Function
 
+    Public Function isAssignedto(userid As Object, role As String) As Boolean
+        Dim sqlstr = String.Format("select count(0) from {0} where item_name = :role and user_id = :userid", assignmentTable)
+        Dim params(1) As IDbDataParameter
+        params(0) = DataAccess.factory.CreateParameter("role", role)
+        params(1) = DataAccess.factory.CreateParameter("userid", userid.ToString)
 
+        Return DataAccess.ExecuteScalar(sqlstr, CommandType.Text, params) > 0
+    End Function
 
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls

@@ -26,13 +26,18 @@ Partial Class FormMenu
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.TransactionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ActionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CreateProductRequestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FindProductRequestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductRequestApprovalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MasterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ParameterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CMMFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RBACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MyTasksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductRequestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
@@ -72,23 +77,41 @@ Partial Class FormMenu
         'MenuStrip1
         '
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TransactionToolStripMenuItem, Me.MasterToolStripMenuItem, Me.AdminToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionsToolStripMenuItem, Me.MasterToolStripMenuItem, Me.AdminToolStripMenuItem, Me.ReportToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(556, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
-        'TransactionToolStripMenuItem
+        'ActionsToolStripMenuItem
         '
-        Me.TransactionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MyTasksToolStripMenuItem})
-        Me.TransactionToolStripMenuItem.Name = "TransactionToolStripMenuItem"
-        Me.TransactionToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
-        Me.TransactionToolStripMenuItem.Text = "Actions"
+        Me.ActionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateProductRequestToolStripMenuItem, Me.FindProductRequestToolStripMenuItem, Me.ProductRequestApprovalToolStripMenuItem})
+        Me.ActionsToolStripMenuItem.Name = "ActionsToolStripMenuItem"
+        Me.ActionsToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
+        Me.ActionsToolStripMenuItem.Text = "Actions"
+        '
+        'CreateProductRequestToolStripMenuItem
+        '
+        Me.CreateProductRequestToolStripMenuItem.Name = "CreateProductRequestToolStripMenuItem"
+        Me.CreateProductRequestToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.CreateProductRequestToolStripMenuItem.Text = "Create Product Request"
+        '
+        'FindProductRequestToolStripMenuItem
+        '
+        Me.FindProductRequestToolStripMenuItem.Name = "FindProductRequestToolStripMenuItem"
+        Me.FindProductRequestToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.FindProductRequestToolStripMenuItem.Text = "Find Product Request"
+        '
+        'ProductRequestApprovalToolStripMenuItem
+        '
+        Me.ProductRequestApprovalToolStripMenuItem.Name = "ProductRequestApprovalToolStripMenuItem"
+        Me.ProductRequestApprovalToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.ProductRequestApprovalToolStripMenuItem.Text = "Product Request Approval"
         '
         'MasterToolStripMenuItem
         '
-        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem})
+        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.CMMFToolStripMenuItem})
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
         Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
         Me.MasterToolStripMenuItem.Text = "Master"
@@ -96,16 +119,22 @@ Partial Class FormMenu
         'ParameterToolStripMenuItem
         '
         Me.ParameterToolStripMenuItem.Name = "ParameterToolStripMenuItem"
-        Me.ParameterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ParameterToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.ParameterToolStripMenuItem.Tag = "FormParameters"
         Me.ParameterToolStripMenuItem.Text = "Parameter"
         '
         'UserToolStripMenuItem
         '
         Me.UserToolStripMenuItem.Name = "UserToolStripMenuItem"
-        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.UserToolStripMenuItem.Tag = "FormUser"
         Me.UserToolStripMenuItem.Text = "User"
+        '
+        'CMMFToolStripMenuItem
+        '
+        Me.CMMFToolStripMenuItem.Name = "CMMFToolStripMenuItem"
+        Me.CMMFToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.CMMFToolStripMenuItem.Text = "CMMF"
         '
         'AdminToolStripMenuItem
         '
@@ -117,15 +146,22 @@ Partial Class FormMenu
         'RBACToolStripMenuItem
         '
         Me.RBACToolStripMenuItem.Name = "RBACToolStripMenuItem"
-        Me.RBACToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RBACToolStripMenuItem.Size = New System.Drawing.Size(104, 22)
         Me.RBACToolStripMenuItem.Tag = "FormRBAC"
         Me.RBACToolStripMenuItem.Text = "RBAC"
         '
-        'MyTasksToolStripMenuItem
+        'ReportToolStripMenuItem
         '
-        Me.MyTasksToolStripMenuItem.Name = "MyTasksToolStripMenuItem"
-        Me.MyTasksToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.MyTasksToolStripMenuItem.Text = "MyTasks"
+        Me.ReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductRequestToolStripMenuItem})
+        Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
+        Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
+        Me.ReportToolStripMenuItem.Text = "Report"
+        '
+        'ProductRequestToolStripMenuItem
+        '
+        Me.ProductRequestToolStripMenuItem.Name = "ProductRequestToolStripMenuItem"
+        Me.ProductRequestToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.ProductRequestToolStripMenuItem.Text = "Product Request"
         '
         'FormMenu
         '
@@ -151,12 +187,17 @@ Partial Class FormMenu
     Friend WithEvents ToolStripContainer1 As System.Windows.Forms.ToolStripContainer
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
-    Friend WithEvents TransactionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ActionsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MasterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ParameterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AdminToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RBACToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UserToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MyTasksToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CreateProductRequestToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProductRequestApprovalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CMMFToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProductRequestToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FindProductRequestToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

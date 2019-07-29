@@ -35,16 +35,24 @@ Public Class DataAccess
         Return ExecuteScalar("marketing.sp_isadmin", CommandType.StoredProcedure, myParams)
     End Function
 
-    Public Shared Function LogLogin(ByVal userid As String)
+    Public Shared Function GetDeptId(ByVal userid As String) As Object
         Dim myret As Boolean = False
-        Dim applicationname As String = "Product Request Apps"
-        Dim username As String = Environment.UserDomainName & "\" & Environment.UserName
-        Dim computername As String = My.Computer.Name
+        Dim SQLstr = "select deptid from marketing.user where userid =:userid; "
+        Dim myParams(0) As IDbDataParameter
+        myParams(0) = factory.CreateParameter("userid", userid.ToString)
+        Return ExecuteScalar(SQLstr, CommandType.Text, myParams)
+    End Function
+
+    Public Shared Function LogLogin(ByVal UserInfo As UserInfo)
+        Dim myret As Boolean = False
+        'Dim applicationname As String = "Product Request Apps"
+        'Dim username As String = Environment.UserDomainName & "\" & Environment.UserName
+        'Dim computername As String = My.Computer.Name
         Dim myParams(3) As IDbDataParameter
-        myParams(0) = factory.CreateParameter("iapplicationname", applicationname)
-        myParams(1) = factory.CreateParameter("iuserid", userid)
-        myParams(2) = factory.CreateParameter("iusername", username)
-        myParams(3) = factory.CreateParameter("icomputername", computername)
+        myParams(0) = factory.CreateParameter("iapplicationname", UserInfo.ApplicationName)
+        myParams(1) = factory.CreateParameter("iuserid", UserInfo.Userid)
+        myParams(2) = factory.CreateParameter("iusername", UserInfo.Username)
+        myParams(3) = factory.CreateParameter("icomputername", UserInfo.computerName)
         Return ExecuteScalar("sp_insertlogonhistory", CommandType.StoredProcedure, myParams)
     End Function
 

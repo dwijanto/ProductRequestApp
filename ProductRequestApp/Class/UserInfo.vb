@@ -10,7 +10,7 @@
     Public Property ApplicationName As String = "Product Request Apps"
     Public Property isAuthenticate As Boolean = False
     Public Property isAdmin As Boolean = False
-    Public Property Role As Integer
+    Public Property Deptid As Integer
 
     Private Shared myInstance As UserInfo
 

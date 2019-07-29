@@ -3,6 +3,8 @@ Public Enum TxEnum
     NewRecord = 1
     CopyRecord = 2
     UpdateRecord = 3
+    HistoryRecord = 4
+    ValidateRecord = 5
 End Enum
 Public Class FormMenu
 
@@ -10,6 +12,7 @@ Public Class FormMenu
     Dim HasError As Boolean = True
     Private userid As String
     Private myuser As UserController
+    Dim myRbac As New DbManager
 
     Public Sub New()
         myuser = New UserController
@@ -18,13 +21,18 @@ Public Class FormMenu
         ' Add any initialization after the InitializeComponent() call.
 
         Try
-            'userinfo1 = UserInfo.getInstance
-            userinfo1.Userid = Environment.UserDomainName & "\" & Environment.UserName
+            UserInfo1.Userid = Environment.UserDomainName & "\" & Environment.UserName
+            'UserInfo1.Userid = "AS\cchan"
+            'UserInfo1.Userid = "AS\btam"
+            'UserInfo1.Userid = "AS\jshum"
+            'UserInfo1.Userid = "AS\rleung"
+            'UserInfo1.Userid = "AS\dwoo"
             userinfo1.computerName = My.Computer.Name
             UserInfo1.ApplicationName = "Product Request Apps"
-            userinfo1.Username = "N/A"
-            userinfo1.isAuthenticate = False
-            userinfo1.Role = 0
+            UserInfo1.Username = Environment.UserDomainName & "\" & Environment.UserName
+            UserInfo1.isAuthenticate = False
+            Dim tmp = DataAccess.GetDeptId(UserInfo1.Userid)
+            UserInfo1.Deptid = IIf(IsDBNull(tmp), Nothing, tmp)
             UserInfo1.isAdmin = DataAccess.isAdmin(UserInfo1.Userid)
             HasError = False
         Catch ex As Exception
@@ -39,7 +47,7 @@ Public Class FormMenu
         End If
 
         Try
-            userid = userinfo1.Userid 'Environment.UserDomainName & "\" & Environment.UserName
+            userid = UserInfo1.Userid
 
             Dim myAD = New ADPrincipalContext
             Dim UserInfo As List(Of ADPrincipalContext) = New List(Of ADPrincipalContext)
@@ -58,7 +66,7 @@ Public Class FormMenu
                 User.setIdentity(identity)
                 User.login(identity)
                 User.IdentityClass = myuser
-                DataAccess.LogLogin(UserInfo1.Userid)
+                DataAccess.LogLogin(UserInfo1)
                 Me.Text = GetMenuDesc()
                 Me.Location = New Point(300, 10)
                 MenuHandles()
@@ -78,19 +86,16 @@ Public Class FormMenu
     End Function
 
     Private Sub MenuHandles()
-
-        ''Admin Function
-        ''MasterToolStripMenuItem.Visible = userinfo1.isAdmin
-        'AddHandler VendorAssignmentQEUserToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
-        'AddHandler FirstCmmfToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
-        'AddHandler MissingVendorToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
         AddHandler RBACToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
         AddHandler UserToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
-
-        'Dim identity As UserController = User.getIdentity
+        AddHandler ParameterToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        ActionsToolStripMenuItem.Visible = User.can("View Actions")
+        FindProductRequestToolStripMenuItem.Visible = User.can("Create Product Request") And (DirectCast(User.identity, UserController).deptid = DeptEnum.MarketingHK Or DirectCast(User.identity, UserController).deptid = DeptEnum.SalesHK) 'User with deptid in Sales HK and Marketing HK
+        CreateProductRequestToolStripMenuItem.Visible = User.can("Create Product Request") And (DirectCast(User.identity, UserController).deptid = DeptEnum.MarketingHK Or DirectCast(User.identity, UserController).deptid = DeptEnum.SalesHK) 'User with deptid in Sales HK and Marketing HK
+        ProductRequestApprovalToolStripMenuItem.Visible = User.can("View Product Request Approval")
+        ParameterToolStripMenuItem.Visible = User.can("View Master")
         MasterToolStripMenuItem.Visible = User.can("View Master")
         AdminToolStripMenuItem.Visible = User.can("View Admin")
-       
     End Sub
 
     Private Sub ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -103,17 +108,31 @@ Public Class FormMenu
         myform.activate()
     End Sub
 
+    Private Sub MyTasksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateProductRequestToolStripMenuItem.Click
+        Dim myform As New FormProductRequest(0, TxEnum.NewRecord)
+        myform.Show()
+    End Sub
 
-
-    Private Sub MyTasksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MyTasksToolStripMenuItem.Click
+    Private Sub TransactionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ActionsToolStripMenuItem.Click
 
     End Sub
 
-    Private Sub UserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserToolStripMenuItem.Click
+    Private Sub ProductRequestApprovalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductRequestApprovalToolStripMenuItem.Click
+        Dim myform = New FormMyTasks
+        myform.Show()
+    End Sub
+
+    Private Sub ParameterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ParameterToolStripMenuItem.Click
 
     End Sub
 
-    Private Sub MasterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MasterToolStripMenuItem.Click
+    Private Sub FindProductRequestToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FindProductRequestToolStripMenuItem.Click
+        Dim myform As New FormFindProductRequest()
+        myform.Show()
+    End Sub
 
+    Private Sub ProductRequestToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductRequestToolStripMenuItem.Click
+        Dim myform As New FormProductRequestReport
+        myform.Show()
     End Sub
 End Class

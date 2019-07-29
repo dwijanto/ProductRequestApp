@@ -12,3 +12,15 @@ C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\P
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.exe
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.xml
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.pdb
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.UCDGVParams.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.UCProductRequest.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.DialogAddUpdProjectRequest.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.DialogAddUpdUser.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.DialogHelper.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.DialogProjectRequest.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.FormFindProductRequest.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.FormMyTasks.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.FormParameters.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.FormProductRequest.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\bin\Release\npgsql.dll
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.FormProductRequestReport.resources

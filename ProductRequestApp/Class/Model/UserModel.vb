@@ -1,4 +1,6 @@
-﻿'-- Table: sales._user
+﻿Imports System.Text
+
+'-- Table: sales._user
 
 '-- DROP TABLE sales._user;
 
@@ -52,7 +54,10 @@ Public Class UserModel
     End Property
 
     Public Function LoadData(ByRef DS As DataSet) As Boolean Implements IModel.LoadData
-        Dim sqlstr = String.Format("select u.* from {0} u order by {1}", TableName, SortField)
+        Dim SB As New StringBuilder
+        SB.Append(String.Format("select u.*,av.approvaltype from {0} u left join marketing.approvalview av on av.id = u.approvalid order by {1};", TableName, SortField))
+        SB.Append("select 0::integer as id, Null::text as approvaltype,Null::text as approvalname union all (select * from marketing.approvalview);")
+        Dim sqlstr = SB.ToString
         DS = DataAccess.GetDataSet(sqlstr, CommandType.Text, Nothing)
         DS.Tables(0).TableName = TableName
         Return True
@@ -74,6 +79,7 @@ Public Class UserModel
             dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "username", DataRowVersion.Current))
             dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "email", DataRowVersion.Current))
             dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Boolean, 0, "isactive", DataRowVersion.Current))
+            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "approvalid", DataRowVersion.Current))
             dataadapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
             sqlstr = "marketing.sp_insert_user"
@@ -82,6 +88,7 @@ Public Class UserModel
             dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "username", DataRowVersion.Current))
             dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "email", DataRowVersion.Current))
             dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Boolean, 0, "isactive", DataRowVersion.Current))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "approvalid", DataRowVersion.Current))
             dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "id", ParameterDirection.InputOutput))
             dataadapter.InsertCommand.CommandType = CommandType.StoredProcedure
 
@@ -107,32 +114,30 @@ Public Class UserModel
         Dim mgrId As Long
         Try
             Dim factory = DataAccess.factory
-            Dim params(9) As System.Data.IDbDataParameter
+            Dim params(8) As System.Data.IDbDataParameter
             If myDATA.Count > 1 Then
                 'User with ID Manager
                 params(0) = factory.CreateParameter("iuserid", myDATA(1).Userid)
                 params(1) = factory.CreateParameter("iusername", myDATA(1).DisplayName)
-                params(2) = factory.CreateParameter("iparent", DBNull.Value)
-                params(3) = factory.CreateParameter("icompany", myDATA(1).Company)
-                params(4) = factory.CreateParameter("iemail", myDATA(1).Email)
-                params(5) = factory.CreateParameter("ititle", myDATA(1).Title)
-                params(6) = factory.CreateParameter("iemployeenumber", myDATA(1).EmployeeNumber)
-                params(7) = factory.CreateParameter("idepartment", myDATA(1).Department)
-                params(8) = factory.CreateParameter("icountry", myDATA(1).Country)
-                params(9) = factory.CreateParameter("ilocation", myDATA(1).Location)
+                params(2) = factory.CreateParameter("icompany", myDATA(1).Company)
+                params(3) = factory.CreateParameter("iemail", myDATA(1).Email)
+                params(4) = factory.CreateParameter("ititle", myDATA(1).Title)
+                params(5) = factory.CreateParameter("iemployeenumber", myDATA(1).EmployeeNumber)
+                params(6) = factory.CreateParameter("idepartment", myDATA(1).Department)
+                params(7) = factory.CreateParameter("icountry", myDATA(1).Country)
+                params(8) = factory.CreateParameter("ilocation", myDATA(1).Location)
                 mgrId = DataAccess.ExecuteScalar("marketing.sp_addupduser", CommandType.StoredProcedure, params)
             End If
             'User Part
             params(0) = factory.CreateParameter("iuserid", myDATA(0).Userid)
             params(1) = factory.CreateParameter("iusername", myDATA(0).DisplayName)
-            params(2) = factory.CreateParameter("iparent", mgrId)
-            params(3) = factory.CreateParameter("icompany", myDATA(0).Company)
-            params(4) = factory.CreateParameter("iemail", myDATA(0).Email)
-            params(5) = factory.CreateParameter("ititle", myDATA(0).Title)
-            params(6) = factory.CreateParameter("iemployeenumber", myDATA(0).EmployeeNumber)
-            params(7) = factory.CreateParameter("idepartment", myDATA(0).Department)
-            params(8) = factory.CreateParameter("icountry", myDATA(0).Country)
-            params(9) = factory.CreateParameter("ilocation", myDATA(0).Location)
+            params(2) = factory.CreateParameter("icompany", myDATA(0).Company)
+            params(3) = factory.CreateParameter("iemail", myDATA(0).Email)
+            params(4) = factory.CreateParameter("ititle", myDATA(0).Title)
+            params(5) = factory.CreateParameter("iemployeenumber", myDATA(0).EmployeeNumber)
+            params(6) = factory.CreateParameter("idepartment", myDATA(0).Department)
+            params(7) = factory.CreateParameter("icountry", myDATA(0).Country)
+            params(8) = factory.CreateParameter("ilocation", myDATA(0).Location)
             DataAccess.ExecuteScalar("marketing.sp_addupduser", CommandType.StoredProcedure, params)
             myret = True
         Catch ex As Exception

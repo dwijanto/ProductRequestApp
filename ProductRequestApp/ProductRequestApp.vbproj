@@ -45,10 +45,14 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ProductRequest.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="npgsql, Version=2.1.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Npgsql\v4.0_2.1.3.0__5d8b90d52f46fda7\npgsql.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -81,20 +85,31 @@
     <Compile Include="Class\Adapter\ClassSqlFactory.vb" />
     <Compile Include="Class\Adapter\DataAccess.vb" />
     <Compile Include="Class\Adapter\DbFactory.vb" />
+    <Compile Include="Class\Adapter\ParamAdapter.vb" />
     <Compile Include="Class\ADPrincipalContext.vb" />
+    <Compile Include="Class\Controller\BPartnerController.vb" />
     <Compile Include="Class\Controller\CMMFController.vb" />
+    <Compile Include="Class\Controller\ExpensesTypeController.vb" />
+    <Compile Include="Class\Controller\ProductRequestController.vb" />
     <Compile Include="Class\Controller\UserController.vb" />
     <Compile Include="Class\Controller\VendorController.vb" />
+    <Compile Include="Class\Email.vb" />
+    <Compile Include="Class\ExportToExcelFile.vb" />
     <Compile Include="Class\GenerateReport.vb" />
     <Compile Include="Class\Interface\IActiveRecord.vb" />
     <Compile Include="Class\Interface\IController.vb" />
     <Compile Include="Class\Interface\IModel.vb" />
     <Compile Include="Class\Interface\IToolbarAction.vb" />
     <Compile Include="Class\ItemCreation.vb" />
+    <Compile Include="Class\Logger.vb" />
+    <Compile Include="Class\Model\BPartnerModel.vb" />
     <Compile Include="Class\Model\CMMFModel.vb" />
+    <Compile Include="Class\Model\ExpensesModel.vb" />
     <Compile Include="Class\Model\GenerateReportModel.vb" />
+    <Compile Include="Class\Model\ProductRequestModel.vb" />
     <Compile Include="Class\Model\UserModel.vb" />
     <Compile Include="Class\Model\VendorModel.vb" />
+    <Compile Include="Class\PREmail.vb" />
     <Compile Include="Class\QueryWorkSheet.vb" />
     <Compile Include="Class\RBAC\Assignment.vb" />
     <Compile Include="Class\RBAC\BaseManager.vb" />
@@ -106,6 +121,18 @@
     <Compile Include="Class\RBAC\Role.vb" />
     <Compile Include="Class\RBAC\Rule.vb" />
     <Compile Include="Class\RBAC\User.vb" />
+    <Compile Include="Class\UserControl\UCDGVParams.Designer.vb">
+      <DependentUpon>UCDGVParams.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCDGVParams.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCProductRequest.Designer.vb">
+      <DependentUpon>UCProductRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCProductRequest.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Class\UserInfo.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
@@ -118,6 +145,60 @@
       <DependentUpon>FormMenu.vb</DependentUpon>
     </Compile>
     <Compile Include="FormMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogAddUpdProjectRequest.Designer.vb">
+      <DependentUpon>DialogAddUpdProjectRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogAddUpdProjectRequest.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogAddUpdUser.Designer.vb">
+      <DependentUpon>DialogAddUpdUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogAddUpdUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogHelper.Designer.vb">
+      <DependentUpon>DialogHelper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogHelper.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogProjectRequest.Designer.vb">
+      <DependentUpon>DialogProjectRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogProjectRequest.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormFindProductRequest.Designer.vb">
+      <DependentUpon>FormFindProductRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFindProductRequest.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMyTasks.Designer.vb">
+      <DependentUpon>FormMyTasks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMyTasks.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormParameters.Designer.vb">
+      <DependentUpon>FormParameters.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormParameters.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormProductRequest.Designer.vb">
+      <DependentUpon>FormProductRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormProductRequest.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormProductRequestReport.Designer.vb">
+      <DependentUpon>FormProductRequestReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormProductRequestReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormRBAC.Designer.vb">
@@ -149,8 +230,41 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Class\UserControl\UCDGVParams.resx">
+      <DependentUpon>UCDGVParams.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCProductRequest.resx">
+      <DependentUpon>UCProductRequest.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogAddUpdProjectRequest.resx">
+      <DependentUpon>DialogAddUpdProjectRequest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogAddUpdUser.resx">
+      <DependentUpon>DialogAddUpdUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogHelper.resx">
+      <DependentUpon>DialogHelper.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogProjectRequest.resx">
+      <DependentUpon>DialogProjectRequest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFindProductRequest.resx">
+      <DependentUpon>FormFindProductRequest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMyTasks.resx">
+      <DependentUpon>FormMyTasks.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormParameters.resx">
+      <DependentUpon>FormParameters.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormProductRequest.resx">
+      <DependentUpon>FormProductRequest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormProductRequestReport.resx">
+      <DependentUpon>FormProductRequestReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormRBAC.resx">
       <DependentUpon>FormRBAC.vb</DependentUpon>
@@ -205,6 +319,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ProductRequest.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

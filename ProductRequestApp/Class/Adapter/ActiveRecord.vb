@@ -15,7 +15,7 @@ Public MustInherit Class ActiveRecord
     End Function
 
     Public Function Find() As Object Implements IActiveRecord.Find
-        Dim sqlstr = String.Format("select * from {0}", tableName)
+        Dim sqlstr = String.Format("select * from {0} ", tableName)
         Return sqlstr
     End Function
 

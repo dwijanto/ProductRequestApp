@@ -23,7 +23,7 @@ Partial Class FormUser
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormUser))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.AddToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.UpdateToolStripButton = New System.Windows.Forms.ToolStripButton()
@@ -42,6 +42,7 @@ Partial Class FormUser
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -58,7 +59,7 @@ Partial Class FormUser
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripButton, Me.UpdateToolStripButton, Me.DeleteToolStripButton, Me.CommitToolStripButton, Me.RefreshToolStripButton, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.ToolStripTextBox1})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(391, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(515, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'AddToolStripButton
@@ -78,7 +79,6 @@ Partial Class FormUser
         Me.UpdateToolStripButton.Name = "UpdateToolStripButton"
         Me.UpdateToolStripButton.Size = New System.Drawing.Size(49, 22)
         Me.UpdateToolStripButton.Text = "Update"
-        Me.UpdateToolStripButton.Visible = False
         '
         'DeleteToolStripButton
         '
@@ -88,7 +88,6 @@ Partial Class FormUser
         Me.DeleteToolStripButton.Name = "DeleteToolStripButton"
         Me.DeleteToolStripButton.Size = New System.Drawing.Size(44, 22)
         Me.DeleteToolStripButton.Text = "Delete"
-        Me.DeleteToolStripButton.Visible = False
         '
         'CommitToolStripButton
         '
@@ -178,14 +177,15 @@ Partial Class FormUser
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToOrderColumns = True
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 35
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column5, Me.Column4})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(808, 469)
         Me.DataGridView1.TabIndex = 0
@@ -195,12 +195,14 @@ Partial Class FormUser
         Me.Column1.DataPropertyName = "userid"
         Me.Column1.HeaderText = "User ID"
         Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
         '
         'Column2
         '
         Me.Column2.DataPropertyName = "username"
         Me.Column2.HeaderText = "User Name"
         Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
         Me.Column2.Width = 150
         '
         'Column3
@@ -208,13 +210,22 @@ Partial Class FormUser
         Me.Column3.DataPropertyName = "email"
         Me.Column3.HeaderText = "Email"
         Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
         Me.Column3.Width = 200
+        '
+        'Column5
+        '
+        Me.Column5.DataPropertyName = "approvaltype"
+        Me.Column5.HeaderText = "Approval Type"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
         '
         'Column4
         '
         Me.Column4.DataPropertyName = "isactive"
         Me.Column4.HeaderText = "Is Active"
         Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
         '
         'FormUser
         '
@@ -257,5 +268,6 @@ Partial Class FormUser
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewCheckBoxColumn
 End Class

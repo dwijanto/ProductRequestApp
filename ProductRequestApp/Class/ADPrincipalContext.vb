@@ -32,7 +32,6 @@ Public Class ADPrincipalContext
         Dim myvar = domainusername.Split("\")
         _domain = myvar(0)
         _user = myvar(1)
-        'Dim ctx As PrincipalContext = New PrincipalContext(ContextType.Domain, Environment.UserDomainName)
         Dim ctx As PrincipalContext = New PrincipalContext(ContextType.Domain, _domain)
 
         Dim usp = UserPrincipal.FindByIdentity(ctx, _user)
@@ -70,45 +69,45 @@ Public Class ADPrincipalContext
                 myInfo.Location = userinfo.Properties("l")(0).ToString
             End If
             ADPrincipalContexts.Add(myInfo)
-            If userinfo.Properties("manager").Count > 0 Then
-                Dim mgrDN As String = userinfo.Properties("manager")(0).ToString
-                Dim mgp As UserPrincipal = GetManager(ctx, mgrDN)
-                If Not IsNothing(mgp) Then
-                    Dim mgrInfo As DirectoryEntry = DirectCast(mgp.GetUnderlyingObject(), DirectoryEntry)
+            'If userinfo.Properties("manager").Count > 0 Then
+            '    Dim mgrDN As String = userinfo.Properties("manager")(0).ToString
+            '    Dim mgp As UserPrincipal = GetManager(ctx, mgrDN)
+            '    If Not IsNothing(mgp) Then
+            '        Dim mgrInfo As DirectoryEntry = DirectCast(mgp.GetUnderlyingObject(), DirectoryEntry)
 
-                    myInfo = New ADPrincipalContext
-                    Dim myArray() = mgrDN.Split(",")
-                    Dim myDomain() = myArray(4).Split("=")
-                    myInfo.Userid = String.Format("{0}\{1}", myDomain(1).ToUpper, mgrInfo.Properties("sAMAccountName")(0).ToString)
+            '        myInfo = New ADPrincipalContext
+            '        Dim myArray() = mgrDN.Split(",")
+            '        Dim myDomain() = myArray(4).Split("=")
+            '        myInfo.Userid = String.Format("{0}\{1}", myDomain(1).ToUpper, mgrInfo.Properties("sAMAccountName")(0).ToString)
 
-                    myInfo.DisplayName = mgrInfo.Properties("displayname")(0).ToString
-                    myInfo.UserName = myInfo.DisplayName
-                    myInfo.Email = mgrInfo.Properties("mail")(0).ToString
-                    myInfo.Company = mgrInfo.Properties("company")(0).ToString
-                    myInfo.Title = mgrInfo.Properties("title")(0).ToString
-                    myInfo.Surename = mgrInfo.Properties("sn")(0).ToString
-                    myInfo.GivenName = mgrInfo.Properties("givenname")(0).ToString
-                    If mgrInfo.Properties("employeenumber").Count > 0 Then
-                        myInfo.EmployeeNumber = mgrInfo.Properties("employeenumber")(0).ToString
-                    End If
-                    If mgrInfo.Properties("telephonenumber").Count > 0 Then
-                        myInfo.TelephoneNumber = mgrInfo.Properties("telephonenumber")(0).ToString
-                    End If
-                    myInfo.Department = mgrInfo.Properties("department")(0).ToString
+            '        myInfo.DisplayName = mgrInfo.Properties("displayname")(0).ToString
+            '        myInfo.UserName = myInfo.DisplayName
+            '        myInfo.Email = mgrInfo.Properties("mail")(0).ToString
+            '        myInfo.Company = mgrInfo.Properties("company")(0).ToString
+            '        myInfo.Title = mgrInfo.Properties("title")(0).ToString
+            '        myInfo.Surename = mgrInfo.Properties("sn")(0).ToString
+            '        myInfo.GivenName = mgrInfo.Properties("givenname")(0).ToString
+            '        If mgrInfo.Properties("employeenumber").Count > 0 Then
+            '            myInfo.EmployeeNumber = mgrInfo.Properties("employeenumber")(0).ToString
+            '        End If
+            '        If mgrInfo.Properties("telephonenumber").Count > 0 Then
+            '            myInfo.TelephoneNumber = mgrInfo.Properties("telephonenumber")(0).ToString
+            '        End If
+            '        myInfo.Department = mgrInfo.Properties("department")(0).ToString
 
-                    If mgrInfo.Properties("co").Count > 0 Then
-                        myInfo.Country = mgrInfo.Properties("co")(0).ToString
-                    End If
+            '        If mgrInfo.Properties("co").Count > 0 Then
+            '            myInfo.Country = mgrInfo.Properties("co")(0).ToString
+            '        End If
 
 
-                    If mgrInfo.Properties("l").Count > 0 Then
-                        myInfo.Location = mgrInfo.Properties("l")(0).ToString
-                    End If
+            '        If mgrInfo.Properties("l").Count > 0 Then
+            '            myInfo.Location = mgrInfo.Properties("l")(0).ToString
+            '        End If
 
-                    mgrDN = mgrInfo.Properties("manager")(0).ToString
-                    ADPrincipalContexts.Add(myInfo)
-                End If
-            End If
+            '        mgrDN = mgrInfo.Properties("manager")(0).ToString
+            '        ADPrincipalContexts.Add(myInfo)
+            '    End If
+            'End If
             
             myret = True
         Else

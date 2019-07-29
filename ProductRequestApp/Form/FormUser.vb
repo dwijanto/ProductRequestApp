@@ -1,4 +1,5 @@
 ﻿Imports System.Threading
+
 Public Class FormUser
     Private Shared myform As FormUser
     Dim myController As UserController
@@ -14,8 +15,6 @@ Public Class FormUser
 
     Dim myThread As New System.Threading.Thread(AddressOf DoWork)
     Dim drv As DataRowView
-
-
 
     Public Sub New()
 
@@ -60,8 +59,7 @@ Public Class FormUser
 
 
     Private Sub AddNewToolStripButton1_Click(sender As Object, e As EventArgs) Handles AddToolStripButton.Click
-        drv = myController.GetNewRecord
-        Me.drv.BeginEdit()
+        showTX(TxEnum.NewRecord)
     End Sub
 
     Private Sub DeleteToolStripButton2_Click(sender As Object, e As EventArgs) Handles DeleteToolStripButton.Click
@@ -110,4 +108,28 @@ Public Class FormUser
     End Sub
 
 
+    Private Sub UpdateToolStripButton_Click(sender As Object, e As EventArgs) Handles UpdateToolStripButton.Click
+        showTX(TxEnum.UpdateRecord)
+    End Sub
+
+    Private Sub showTX(txEnum As TxEnum)
+        Dim ApprovalBS As New BindingSource
+        ApprovalBS.DataSource = myController.getApprovalbs
+        Dim drv As DataRowView = Nothing
+        Select Case txEnum
+            Case ProductRequestApp.TxEnum.NewRecord
+                drv = myController.GetNewRecord
+            Case ProductRequestApp.TxEnum.UpdateRecord
+                drv = myController.GetCurrentRecord
+        End Select
+        drv.BeginEdit()
+
+        Dim myform = New DialogAddUpdUser(drv, ApprovalBS)
+        myform.ShowDialog()
+
+    End Sub
+
+    Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
+        UpdateToolStripButton.PerformClick()
+    End Sub
 End Class

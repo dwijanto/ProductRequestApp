@@ -4,14 +4,18 @@
     Implements IToolbarAction
     Implements IIdentity
 
+
+
     Public Property userid As String
     Public Property username As String
     Public Property id As Object
     Public Property isAdmin As Boolean
-    Public Property eamil As String
+    Public Property email As String
     Public Property isActive As Boolean
     Public Property password_hash As String
-
+    Public Property deptid As Integer
+    Public Property ApprovalId As Integer
+   
     Public Model As New UserModel    
     Dim DS As DataSet
     Public BS As BindingSource
@@ -25,6 +29,11 @@
     Public ReadOnly Property GetTable As DataTable Implements IController.GetTable
         Get
             Return DS.Tables(Model.TableName).copy()
+        End Get
+    End Property
+    Public ReadOnly Property getApprovalbs() As DataTable
+        Get
+            Return DS.Tables(1).Copy
         End Get
     End Property
 
@@ -119,11 +128,15 @@
 
     Private Function populatedata(dr As DataRow) As IIdentity
         Dim Identity = New UserController With {.id = dr.Item("id"),
-                                            .username = "" & dr.Item("username"),
-                                            .isAdmin = dr.Item("isadmin"),
-                                            .isActive = dr.Item("isactive"),
-                                            .userid = "" & dr.Item("userid"),
-                                            .password_hash = ""}
+                                                .username = "" & dr.Item("username"),
+                                                .isAdmin = dr.Item("isadmin"),
+                                                .isActive = dr.Item("isactive"),
+                                                .userid = "" & dr.Item("userid"),
+                                                .email = "" & dr.Item("email"),
+                                                .password_hash = "",
+                                                .deptid = IIf(IsDBNull(dr.Item("deptid")), Nothing, dr.Item("deptid")),
+                                                .ApprovalId = IIf(IsDBNull(dr.Item("approvalid")), Nothing, dr.Item("approvalid"))
+                                               }
         Return Identity
     End Function
     Public Function findIdentityByAccessToken(token As Object, Optional type As Object = Nothing) As Object Implements IIdentity.findIdentityByAccessToken
@@ -154,6 +167,8 @@
         myCondition.Add("lower(userid)", userid.ToLower)
         Return findOne(myCondition)
     End Function
+
+
 
 
 End Class

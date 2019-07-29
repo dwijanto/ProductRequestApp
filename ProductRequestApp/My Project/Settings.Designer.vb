@@ -54,17 +54,6 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("host=hon14nt;port=5432;database=LogisticDb;CommandTimeout=10000;TimeOut=1024;User"& _ 
-            "id=admin;Password=admin;")>  _
-        Public ReadOnly Property Conn1() As String
-            Get
-                Return CType(Me("Conn1"),String)
-            End Get
-        End Property
-        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("ODBC;DSN=PostgreSQLhon03nt;")>  _
@@ -112,6 +101,29 @@ Namespace My
             End Get
             Set
                 Me("MyImagePath") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("host=hon14nt;port=5432;database=LogisticDb;CommandTimeout=10000;TimeOut=1024;User"& _ 
+            "id=admin;Password=admin;")>  _
+        Public ReadOnly Property Conn1() As String
+            Get
+                Return CType(Me("Conn1"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("smtp.seb.com")>  _
+        Public Property smtpclient() As String
+            Get
+                Return CType(Me("smtpclient"),String)
+            End Get
+            Set
+                Me("smtpclient") = value
             End Set
         End Property
     End Class

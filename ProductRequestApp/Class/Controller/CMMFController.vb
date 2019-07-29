@@ -6,19 +6,7 @@
     Public DS As DataSet
 
     Public WithEvents BS As BindingSource
-    Public Event PositionChangeEventHandler()
-    Public Event PricePositionChangeEventHandler()
 
-    'Public PriceCMMFSBUBS As New BindingSource
-    'Public PriceCMMFFamilyBS As New BindingSource
-    'Public PriceCMMFSSMBS As New BindingSource
-    'Public PriceCMMFSPMBS As New BindingSource
-    'Public PriceCMMFProjectBS As New BindingSource
-    'Public PriceCMMFRangeBS As New BindingSource
-
-    'Public PriceCMMFBrandBS As New BindingSource
-    'Public PriceCMMFLoadingBS As New BindingSource
-    'Public PriceCMMFPurchasingGRPBS As New BindingSource
     Public Sub New()
         MyBase.New()
     End Sub
@@ -42,7 +30,7 @@
         Dim myret As Boolean = False
         Model = New CMMFModel
         DS = New DataSet
-        If Model.LoadData(DS) Then
+        If Model.LoadData(DS, "") Then
             Dim pk(0) As DataColumn
             pk(0) = DS.Tables(0).Columns("cmmf")
             DS.Tables(0).PrimaryKey = pk
@@ -53,19 +41,13 @@
         Return myret
     End Function
 
-    Public Function SyncFamily() As Long
-        Return Model.SyncFamilyId()
-    End Function
 
     Public Function loaddata(ByVal criteria As String) As Boolean
         Dim myret As Boolean = False
         Model = New CMMFModel
 
-        RemoveHandler Model.PositionChangedEventhandler, AddressOf BSAgrementChange
-        AddHandler Model.PositionChangedEventhandler, AddressOf BSAgrementChange
-
         DS = New DataSet
-        Model.BSPriceList = New BindingSource        
+
         If Model.LoadData(DS, criteria) Then
             Dim pk(0) As DataColumn
             pk(0) = DS.Tables(0).Columns("cmmf")
@@ -155,13 +137,6 @@
     End Sub
 
 
-    Private Sub BS_PositionChanged(sender As Object, e As EventArgs) Handles BS.PositionChanged
-        RaiseEvent PositionChangeEventHandler()
-    End Sub
-
-    Private Sub BSAgrementChange()
-        RaiseEvent PricePositionChangeEventHandler()
-    End Sub
-
+   
 
 End Class

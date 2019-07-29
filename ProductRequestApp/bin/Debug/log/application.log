@@ -1,0 +1,157 @@
+2019-06-19 04:26:25.561 PM	****** Start Logging ******
+2019-06-19 04:26:25.568 PM	ToolStripButtonSubmit_Click	** Submit AS\cchan**
+2019-06-19 04:28:27.181 PM	ToolStripButtonSubmit_Click	** Submit AS\cchan**
+2019-06-19 04:30:50.525 PM	ToolStripButtonSubmit_Click	** Submit AS\cchan**
+2019-06-19 05:39:58.494 PM	ToolStripButtonSubmit_Click	** Submit AS\cchan**
+2019-06-19 05:40:05.308 PM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-19 05:40:06.434 PM	SendEmail	Error Message: 
+2019-06-20 10:30:55.529 AM	ToolStripButtonSubmit_Click	** Submit AS\cchan**
+2019-06-20 10:31:07.832 AM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-20 10:31:07.836 AM	SendEmail	Error Message: 
+2019-06-20 12:04:19.466 PM	ToolStripButtonSubmit_Click	** Submit AS\cchan**
+2019-06-20 12:05:41.211 PM	SendEmail	SendTo: btam@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-06-20 12:05:42.933 PM	SendEmail	Error Message: 
+2019-06-20 03:19:29.286 PM	setApproval	** Submit AS\btam**
+2019-06-20 03:20:08.313 PM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-20 03:20:08.723 PM	SendEmail	Error Message: 
+2019-06-20 03:36:58.219 PM	setApproval	** Submit AS\btam**
+2019-06-20 03:37:09.541 PM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-20 03:37:09.543 PM	SendEmail	Error Message: 
+2019-06-20 04:04:48.418 PM	setApproval	** Submit AS\jshum**
+2019-06-20 04:05:03.474 PM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-20 04:05:04.034 PM	SendEmail	Error Message: 
+2019-06-20 05:02:10.325 PM	setApproval	** Submit AS\swong**
+2019-06-20 05:03:22.884 PM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-20 05:03:23.590 PM	SendEmail	Error Message: 
+2019-06-20 05:36:54.695 PM	setApproval	** Submit AS\cchan**
+2019-06-20 05:36:57.089 PM	SendEmail	SendTo: btam@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-06-20 05:36:57.092 PM	SendEmail	Error Message: 
+2019-06-20 05:39:31.549 PM	setApproval	** Submit AS\dlie**
+2019-06-20 05:39:47.927 PM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-20 05:39:47.930 PM	SendEmail	Error Message: 
+2019-06-21 11:07:35.165 AM	setApproval	** Submit AS\cchan**
+2019-06-21 11:08:50.814 AM	SendEmail	SendTo: btam@groupeseb.com, SendTo Name: TAM Boris, StatusName: Cancelled
+2019-06-21 11:08:52.614 AM	SendEmail	Error Message: 
+2019-06-24 11:25:38.400 AM	setApproval	** Submit AS\cchan**
+2019-06-24 11:25:40.163 AM	SendEmail	SendTo: btam@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-06-24 11:25:40.164 AM	SendEmail	Error Message: 
+2019-06-24 11:35:04.575 AM	setApproval	** Submit AS\btam**
+2019-06-24 11:35:13.763 AM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-24 11:35:13.765 AM	SendEmail	Error Message: 
+2019-06-24 12:21:41.636 PM	setApproval	** Submit AS\swong**
+2019-06-24 12:21:44.644 PM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-24 12:21:44.646 PM	SendEmail	Error Message: 
+2019-06-24 03:29:44.803 PM	setApproval	** Submit AS\swong**
+2019-06-24 03:29:48.626 PM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-24 03:29:48.660 PM	SendEmail	Error Message: 
+2019-06-24 03:38:45.199 PM	setApproval	** Submit AS\swong**
+2019-06-24 04:16:06.151 PM	setApproval	** Submit AS\swong**
+2019-06-24 04:16:09.251 PM	SendEmail	SendTo: , SendTo Name: , StatusName: 
+2019-06-24 04:16:09.252 PM	SendEmail	Error Message: 
+2019-07-03 02:52:18.448 PM	setApproval	** Submit AS\cchan**
+2019-07-03 02:58:52.373 PM	SendEmail	SendTo: btam@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-07-03 02:59:53.035 PM	Execute	vendorcode is neither a DataColumn nor a DataRelation for table prhd.
+2019-07-03 03:00:12.154 PM	SendEmail	Error Message: 
+2019-07-03 03:01:41.672 PM	SendEmail	SendTo: btam@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-07-03 03:45:07.751 PM	setApproval	** Submit AS\cchan**
+2019-07-03 03:48:56.563 PM	SendEmail	SendTo: btam@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-07-03 04:20:38.473 PM	setApproval	** Submit AS\cchan**
+2019-07-03 04:20:56.085 PM	SendEmail	SendTo: btam@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-07-03 04:25:31.675 PM	setApproval	** Submit AS\cchan**
+2019-07-03 04:25:42.556 PM	SendEmail	SendTo: btam@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-07-03 04:48:06.222 PM	send	Create SMTPClient
+2019-07-03 04:48:11.466 PM	send	SMTP Send
+2019-07-03 04:48:17.334 PM	send	SMTP Send Done
+2019-07-03 04:48:30.014 PM	SendEmail	Email Sent
+2019-07-04 10:18:08.678 AM	setApproval	** Submit AS\cchan**
+2019-07-04 10:20:35.768 AM	setApproval	** Submit AS\cchan**
+2019-07-04 10:20:54.258 AM	SendEmail	SendTo: btam@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-07-04 10:21:24.041 AM	send	Create SMTPClient
+2019-07-04 10:21:24.067 AM	send	SMTP Send
+2019-07-04 10:21:26.192 AM	send	SMTP Send Done
+2019-07-04 10:21:47.179 AM	SendEmail	Email Sent
+2019-07-04 10:25:28.095 AM	setApproval	** Submit AS\btam**
+2019-07-04 10:26:07.491 AM	SendEmail	SendTo: rleung@groupeseb.com, SendTo Name: Supply Chain, StatusName: Validated by Dept
+2019-07-04 10:27:35.803 AM	send	Create SMTPClient
+2019-07-04 10:27:36.575 AM	send	SMTP Send
+2019-07-04 10:27:39.626 AM	send	SMTP Send Done
+2019-07-04 10:27:48.035 AM	SendEmail	Email Sent
+2019-07-04 10:32:17.915 AM	setApproval	** Submit AS\rleung**
+2019-07-04 10:43:53.228 AM	setApproval	** Submit AS\rleung**
+2019-07-04 10:45:04.956 AM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: CHAN Catherine, StatusName: Completed
+2019-07-04 10:45:22.351 AM	send	Create SMTPClient
+2019-07-04 10:45:22.386 AM	send	SMTP Send
+2019-07-04 10:45:28.541 AM	send	SMTP Send Done
+2019-07-04 10:45:33.948 AM	SendEmail	Email Sent
+2019-07-04 11:09:12.880 AM	setApproval	** Submit AS\cchan**
+2019-07-04 11:09:34.110 AM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-07-04 11:09:35.965 AM	send	Create SMTPClient
+2019-07-04 11:09:36.017 AM	send	SMTP Send
+2019-07-04 11:09:38.694 AM	send	SMTP Send Done
+2019-07-04 11:09:38.872 AM	SendEmail	Email Sent
+2019-07-04 11:19:34.581 AM	setApproval	** Submit AS\btam**
+2019-07-04 11:19:46.764 AM	SendEmail	SendTo: rleung@groupeseb.com, SendTo Name: Supply Chain, StatusName: Validated by Dept
+2019-07-04 11:20:07.691 AM	send	Create SMTPClient
+2019-07-04 11:20:07.719 AM	send	SMTP Send
+2019-07-04 11:20:10.428 AM	send	SMTP Send Done
+2019-07-04 11:20:10.606 AM	SendEmail	Email Sent
+2019-07-04 11:23:21.734 AM	setApproval	** Submit AS\rleung**
+2019-07-04 11:23:30.569 AM	SendEmail	SendTo: cchan@groupeseb.com, SendTo Name: CHAN Catherine, StatusName: Completed
+2019-07-04 11:23:46.881 AM	send	Create SMTPClient
+2019-07-04 11:23:46.911 AM	send	SMTP Send
+2019-07-04 11:23:49.448 AM	send	SMTP Send Done
+2019-07-04 11:23:49.630 AM	SendEmail	Email Sent
+2019-07-05 09:37:19.376 AM	setApproval	** Submit AS\cchan**
+2019-07-05 09:37:51.729 AM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: TAM Boris, StatusName: New
+2019-07-05 09:37:57.937 AM	send	Create SMTPClient
+2019-07-05 09:37:57.957 AM	send	SMTP Send
+2019-07-05 09:38:00.541 AM	send	SMTP Send Done
+2019-07-05 09:38:00.713 AM	SendEmail	Email Sent
+2019-07-05 09:41:28.954 AM	setApproval	** Submit AS\btam**
+2019-07-05 09:41:55.733 AM	SendEmail	SendTo: jshum@groupeseb.com, SendTo Name: SHUM Jo, StatusName: Validated by Dept
+2019-07-05 09:42:21.762 AM	send	Create SMTPClient
+2019-07-05 09:42:21.800 AM	send	SMTP Send
+2019-07-05 09:42:29.550 AM	send	SMTP Send Done
+2019-07-05 09:42:29.722 AM	SendEmail	Email Sent
+2019-07-05 09:55:51.221 AM	setApproval	** Submit AS\jshum**
+2019-07-05 09:56:14.249 AM	SendEmail	SendTo: rleung@groupeseb.com, SendTo Name: Supply Chain, StatusName: 
+2019-07-05 09:56:26.309 AM	send	Create SMTPClient
+2019-07-05 09:56:26.351 AM	send	SMTP Send
+2019-07-05 09:56:29.256 AM	send	SMTP Send Done
+2019-07-05 09:56:29.426 AM	SendEmail	Email Sent
+2019-07-05 10:20:29.618 AM	setApproval	** Submit AS\rleung**
+2019-07-05 10:20:38.418 AM	SendEmail	SendTo: cchan@groupeseb.com, SendTo Name: CHAN Catherine, StatusName: Completed
+2019-07-05 10:21:46.456 AM	send	Create SMTPClient
+2019-07-05 10:21:46.490 AM	send	SMTP Send
+2019-07-05 10:21:49.140 AM	send	SMTP Send Done
+2019-07-05 10:21:49.445 AM	SendEmail	Email Sent
+2019-07-05 02:32:36.620 PM	setApproval	** Submit AS\rleung**
+2019-07-05 02:32:48.496 PM	SendEmail	SendTo: cchan@groupeseb.com, SendTo Name: CHAN Catherine, StatusName: Completed
+2019-07-05 02:33:10.004 PM	send	Create SMTPClient
+2019-07-05 02:33:10.058 PM	send	SMTP Send
+2019-07-05 02:33:12.705 PM	send	SMTP Send Done
+2019-07-05 02:33:12.878 PM	SendEmail	Email Sent
+2019-07-05 03:42:05.641 PM	setApproval	** Submit AS\rleung**
+2019-07-05 03:42:25.926 PM	SendEmail	SendTo: cchan@groupeseb.com, SendTo Name: CHAN Catherine, StatusName: Completed
+2019-07-05 03:42:41.693 PM	send	Create SMTPClient
+2019-07-05 03:42:41.736 PM	send	SMTP Send
+2019-07-05 03:42:44.148 PM	send	SMTP Send Done
+2019-07-05 03:42:44.319 PM	SendEmail	Email Sent
+2019-07-15 10:52:25.213 AM	setApproval	** Submit AS\dwoo**
+2019-07-15 10:52:38.033 AM	SendEmail	SendTo: dwoo@groupeseb.com, SendTo Name: WOO Dick, StatusName: New
+2019-07-15 10:52:59.962 AM	send	Create SMTPClient
+2019-07-15 10:53:00.015 AM	send	SMTP Send
+2019-07-15 10:53:35.792 AM	send	SMTP Send Done
+2019-07-15 10:53:35.969 AM	SendEmail	Email Sent
+2019-07-15 10:58:02.017 AM	setApproval	** Submit AS\dwoo**
+2019-07-15 10:58:06.381 AM	SendEmail	SendTo: dwoo@groupeseb.com, SendTo Name: Supply Chain, StatusName: Validated by Dept
+2019-07-15 10:58:19.181 AM	send	Create SMTPClient
+2019-07-15 10:58:19.182 AM	send	SMTP Send
+2019-07-15 10:58:26.894 AM	send	SMTP Send Done
+2019-07-15 10:58:27.072 AM	SendEmail	Email Sent
+2019-07-15 11:01:28.258 AM	setApproval	** Submit AS\dwoo**
+2019-07-15 11:01:52.596 AM	SendEmail	SendTo: dwoo@groupeseb.com, SendTo Name: WOO Dick, StatusName: Completed
+2019-07-15 11:02:00.162 AM	send	Create SMTPClient
+2019-07-15 11:02:00.191 AM	send	SMTP Send
+2019-07-15 11:02:02.824 AM	send	SMTP Send Done
+2019-07-15 11:02:03.002 AM	SendEmail	Email Sent
