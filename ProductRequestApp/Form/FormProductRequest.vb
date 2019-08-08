@@ -365,19 +365,20 @@ Public Class FormProductRequest
                     sendToName = "Supply Chain"
                 End If
             Case ProductRequestStatusEnum.StatusValidatedbyMDirector
+                StatusName = "Validated by Managing Director"
                 SendTo = SupplyChainTo
                 CC = SupplyChainCC
                 sendToName = "Supply Chain"
             Case ProductRequestStatusEnum.StatusRejectedbyDirector
                 'sendto creator
-                SendTo = SupplyChainTo
-                CC = SupplyChainCC
-                sendToName = "Supply Chain"
+                StatusName = "Rejected by Director"
+                SendTo = DRV.Row.Item("applicantemail")
+                sendToName = DRV.Row.Item("applicantname")
             Case ProductRequestStatusEnum.StatusRejectedbyMDirector
                 'Send to Creator
                 StatusName = "Rejected by Managing Director"
-                SendTo = DirectCast(User.identity, UserController).email
-                sendToName = DirectCast(User.identity, UserController).username
+                SendTo = DRV.Row.Item("applicantemail")
+                sendToName = DRV.Row.Item("applicantname")
             Case ProductRequestStatusEnum.StatusCompleted
                 'send to Creator
                 StatusName = "Completed"
