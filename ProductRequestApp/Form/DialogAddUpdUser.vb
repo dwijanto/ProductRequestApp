@@ -3,8 +3,9 @@
 Public Class DialogAddUpdUser
     Dim DRV As DataRowView
     Dim ApprovalBS As BindingSource
+    Dim DeptBS As BindingSource
 
-    Public Sub New(ByVal drv As DataRowView, ApprovalBS As BindingSource)
+    Public Sub New(ByVal drv As DataRowView, ApprovalBS As BindingSource, DeptBS As BindingSource)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -12,6 +13,7 @@ Public Class DialogAddUpdUser
         ' Add any initialization after the InitializeComponent() call.
         Me.DRV = drv
         Me.ApprovalBS = ApprovalBS
+        Me.DeptBS = DeptBS
     End Sub
 
     Public Shadows Function Validate() As Boolean
@@ -22,6 +24,13 @@ Public Class DialogAddUpdUser
                 DRV.Row.Item("approvalid") = DBNull.Value
             End If
             DRV.Row.Item("approvaltype") = CBDrv.Row.Item("approvaltype")
+        End If
+        CBDrv = ComboBox2.SelectedItem
+        If Not IsNothing(CBDrv) Then
+            If CBDrv.Row.Item("id") = 0 Then
+                DRV.Row.Item("deptid") = DBNull.Value
+            End If
+            DRV.Row.Item("departmentname") = CBDrv.Row.Item("department")
         End If
         Return True
     End Function
@@ -54,10 +63,15 @@ Public Class DialogAddUpdUser
         ComboBox1.DisplayMember = "approvaltype"
         ComboBox1.ValueMember = "id"
 
+        ComboBox2.DataSource = DeptBS
+        ComboBox2.DisplayMember = "department"
+        ComboBox2.ValueMember = "id"
+
         TextBox1.DataBindings.Add(New Binding("Text", DRV, "userid", True, DataSourceUpdateMode.OnPropertyChanged, ""))
         TextBox2.DataBindings.Add(New Binding("Text", DRV, "username", True, DataSourceUpdateMode.OnPropertyChanged, ""))
         TextBox3.DataBindings.Add(New Binding("Text", DRV, "email", True, DataSourceUpdateMode.OnPropertyChanged, ""))
         ComboBox1.DataBindings.Add(New Binding("SelectedValue", DRV, "approvalid", True, DataSourceUpdateMode.OnPropertyChanged, ""))
+        ComboBox2.DataBindings.Add(New Binding("SelectedValue", DRV, "deptid", True, DataSourceUpdateMode.OnPropertyChanged, ""))
         CheckBox1.DataBindings.Add(New Binding("checked", DRV, "isactive", True, DataSourceUpdateMode.OnPropertyChanged))
 
     End Sub

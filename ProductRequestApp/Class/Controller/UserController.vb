@@ -37,6 +37,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property getdeptbs() As DataTable
+        Get
+            Return DS.Tables(2).Copy
+        End Get
+    End Property
+
     Public ReadOnly Property GetBindingSource As BindingSource
         Get
             Dim BS As New BindingSource

@@ -114,7 +114,9 @@ Public Class FormUser
 
     Private Sub showTX(txEnum As TxEnum)
         Dim ApprovalBS As New BindingSource
+        Dim DeptBS As New BindingSource
         ApprovalBS.DataSource = myController.getApprovalbs
+        DeptBS.DataSource = myController.getdeptbs
         Dim drv As DataRowView = Nothing
         Select Case txEnum
             Case ProductRequestApp.TxEnum.NewRecord
@@ -124,7 +126,7 @@ Public Class FormUser
         End Select
         drv.BeginEdit()
 
-        Dim myform = New DialogAddUpdUser(drv, ApprovalBS)
+        Dim myform = New DialogAddUpdUser(drv, ApprovalBS, DeptBS)
         myform.ShowDialog()
 
     End Sub

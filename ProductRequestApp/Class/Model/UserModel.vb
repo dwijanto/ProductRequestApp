@@ -55,8 +55,9 @@ Public Class UserModel
 
     Public Function LoadData(ByRef DS As DataSet) As Boolean Implements IModel.LoadData
         Dim SB As New StringBuilder
-        SB.Append(String.Format("select u.*,av.approvaltype from {0} u left join marketing.approvalview av on av.id = u.approvalid order by {1};", TableName, SortField))
+        SB.Append(String.Format("select u.*,av.approvaltype,dv.department as departmentname from {0} u left join marketing.approvalview av on av.id = u.approvalid left join marketing.departmentview dv on dv.deptid = u.deptid order by {1};", TableName, SortField))
         SB.Append("select 0::integer as id, Null::text as approvaltype,Null::text as approvalname union all (select * from marketing.approvalview);")
+        SB.Append("select 0::integer as id,Null::text as department union all (select * from marketing.departmentview);")
         Dim sqlstr = SB.ToString
         DS = DataAccess.GetDataSet(sqlstr, CommandType.Text, Nothing)
         DS.Tables(0).TableName = TableName
@@ -80,6 +81,7 @@ Public Class UserModel
             dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "email", DataRowVersion.Current))
             dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Boolean, 0, "isactive", DataRowVersion.Current))
             dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "approvalid", DataRowVersion.Current))
+            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "deptid", DataRowVersion.Current))
             dataadapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
             sqlstr = "marketing.sp_insert_user"
@@ -89,6 +91,7 @@ Public Class UserModel
             dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "email", DataRowVersion.Current))
             dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Boolean, 0, "isactive", DataRowVersion.Current))
             dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "approvalid", DataRowVersion.Current))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "deptid", DataRowVersion.Current))
             dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "id", ParameterDirection.InputOutput))
             dataadapter.InsertCommand.CommandType = CommandType.StoredProcedure
 
