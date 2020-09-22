@@ -14,7 +14,6 @@ C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\P
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.pdb
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.UCDGVParams.resources
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.UCProductRequest.resources
-C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.DialogAddUpdProjectRequest.resources
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.DialogAddUpdUser.resources
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.DialogHelper.resources
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.DialogProjectRequest.resources
@@ -24,3 +23,9 @@ C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\P
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.FormProductRequest.resources
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\bin\Release\npgsql.dll
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.FormProductRequestReport.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.DialogAddUpdProductRequest.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.FormCMMF.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.SplashScreen1.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.DialogAddUpdBPAddress.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.FormBPAddress.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Release\ProductRequestApp.FormBPartner.resources

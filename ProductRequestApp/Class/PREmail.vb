@@ -26,10 +26,19 @@ Public Class PREmail
         sb.Append("<table border=1 cellspacing=0 class='defaultfont'><tr><th>CMMF</th> <th>Product Name</th> <th>Quantity</th><th>Price</th><th>Total Cost HKD</th><th>Cost Element / Cost Center Record</th></tr>")
         Dim mytotal As Decimal = 0
         For Each mydrv In dtlbs.List
-            Dim total = mydrv.item("qty") * mydrv.item("price")
+            Dim total As Decimal
+            Dim myqty As Integer
+            If IsDBNull(mydrv.item("confirmedqty")) Then
+                total = mydrv.item("qty") * mydrv.item("price")
+                myqty = mydrv.item("qty")
+            Else
+                total = mydrv.item("confirmedqty") * mydrv.item("price")
+                myqty = mydrv.item("confirmedqty")
+            End If
+
             mytotal += total
             sb.Append(String.Format("<tr><td>{0}</td><td>{1}</td><td align=right>{2}</td><td align=right>{3:#,##0.00}</td><td align=right>{4:#,##0.00}</td><td>{5}</td></tr>",
-                                mydrv.item("cmmf"), mydrv.item("localdescription"), mydrv.item("qty"), mydrv.item("price"), total, mydrv.item("expensesname")))
+                                mydrv.item("cmmf"), mydrv.item("localdescription"), myqty, mydrv.item("price"), total, mydrv.item("expensesname")))
         Next
 
         sb.Append(String.Format("</table><br>Total: {0:#,##0.00} <p>Thank you.<br><br>You can access the system in RD Web Access by below link:<br>   <a href=""https://sw07e601/RDWeb"">Product Request Application.</a></p><br></body></html>", mytotal))

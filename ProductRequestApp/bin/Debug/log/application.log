@@ -155,3 +155,21 @@
 2019-07-15 11:02:00.191 AM	send	SMTP Send
 2019-07-15 11:02:02.824 AM	send	SMTP Send Done
 2019-07-15 11:02:03.002 AM	SendEmail	Email Sent
+2020-01-23 09:54:42.976 AM	setApproval	** Submit AS\dlie**
+2020-01-23 09:55:00.410 AM	SendEmail	SendTo: dwoo@groupeseb.com, SendTo Name: WOO Dick, StatusName: New
+2020-01-23 10:00:44.726 AM	send	Create SMTPClient
+2020-01-23 10:00:47.996 AM	send	SMTP Send
+2020-01-23 10:00:53.696 AM	send	SMTP Send Done
+2020-01-23 10:01:59.716 AM	SendEmail	Email Sent
+2020-01-23 10:47:12.147 AM	setApproval	** Submit AS\dlie**
+2020-01-23 10:48:37.528 AM	SendEmail	SendTo: dwoo@groupeseb.com, SendTo Name: WOO Dick, StatusName: Rejected by Managing Director
+2020-01-23 02:34:06.445 PM	setApproval	** Submit AS\rleung**
+2020-01-23 02:40:53.430 PM	setApproval	** Submit AS\rleung**
+2020-01-23 02:50:34.947 PM	SendEmail	SendTo: dwoo@groupeseb.com, SendTo Name: WOO Dick, StatusName: Completed
+2020-01-23 03:00:40.600 PM	setApproval	** Submit AS\rleung**
+2020-01-23 03:07:55.731 PM	setApproval	** Submit AS\rleung**
+2020-01-23 03:12:55.678 PM	SendEmail	SendTo: dwoo@groupeseb.com, SendTo Name: WOO Dick, StatusName: Completed
+2020-01-23 03:15:23.663 PM	send	Create SMTPClient
+2020-01-23 03:15:26.073 PM	send	SMTP Send
+2020-01-23 03:15:38.060 PM	send	SMTP Send Done
+2020-01-23 03:15:43.652 PM	SendEmail	Email Sent

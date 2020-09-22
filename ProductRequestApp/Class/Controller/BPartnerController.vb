@@ -32,8 +32,12 @@
         DS = New DataSet
         If Model.LoadData(DS, "") Then
             Dim pk(0) As DataColumn
-            pk(0) = DS.Tables(0).Columns("cmmf")
+            pk(0) = DS.Tables(0).Columns("id")
             DS.Tables(0).PrimaryKey = pk
+            DS.Tables(0).Columns("id").AutoIncrement = True
+            DS.Tables(0).Columns("id").AutoIncrementSeed = -1
+            DS.Tables(0).Columns("id").AutoIncrementStep = -1
+
             BS = New BindingSource
             BS.DataSource = DS.Tables(0)
             myret = True
@@ -42,37 +46,37 @@
     End Function
 
 
-    Public Function loaddata(ByVal criteria As String) As Boolean
-        Dim myret As Boolean = False
-        Model = New BPartnerModel
+    'Public Function loaddata(ByVal criteria As String) As Boolean
+    '    Dim myret As Boolean = False
+    '    Model = New BPartnerModel
 
-        DS = New DataSet
+    '    DS = New DataSet
 
-        If Model.LoadData(DS, criteria) Then
-            Dim pk(0) As DataColumn
-            pk(0) = DS.Tables(0).Columns("cmmf")
-            DS.Tables(0).PrimaryKey = pk
+    '    If Model.LoadData(DS, criteria) Then
+    '        Dim pk(0) As DataColumn
+    '        pk(0) = DS.Tables(0).Columns("cmmf")
+    '        DS.Tables(0).PrimaryKey = pk
 
-            Dim pk1(0) As DataColumn
-            pk1(0) = DS.Tables(5).Columns("pcprojectid")
-            DS.Tables(5).PrimaryKey = pk1
-            DS.Tables(5).Columns("pcprojectid").AutoIncrement = True
-            DS.Tables(5).Columns("pcprojectid").AutoIncrementSeed = -1
-            DS.Tables(5).Columns("pcprojectid").AutoIncrementStep = -1
+    '        Dim pk1(0) As DataColumn
+    '        pk1(0) = DS.Tables(5).Columns("pcprojectid")
+    '        DS.Tables(5).PrimaryKey = pk1
+    '        DS.Tables(5).Columns("pcprojectid").AutoIncrement = True
+    '        DS.Tables(5).Columns("pcprojectid").AutoIncrementSeed = -1
+    '        DS.Tables(5).Columns("pcprojectid").AutoIncrementStep = -1
 
 
-            Dim pk2(0) As DataColumn
-            pk2(0) = DS.Tables(6).Columns("pcrangeid")
-            DS.Tables(6).PrimaryKey = pk2
-            DS.Tables(6).Columns("pcrangeid").AutoIncrement = True
-            DS.Tables(6).Columns("pcrangeid").AutoIncrementSeed = -1
-            DS.Tables(6).Columns("pcrangeid").AutoIncrementStep = -1
+    '        Dim pk2(0) As DataColumn
+    '        pk2(0) = DS.Tables(6).Columns("pcrangeid")
+    '        DS.Tables(6).PrimaryKey = pk2
+    '        DS.Tables(6).Columns("pcrangeid").AutoIncrement = True
+    '        DS.Tables(6).Columns("pcrangeid").AutoIncrementSeed = -1
+    '        DS.Tables(6).Columns("pcrangeid").AutoIncrementStep = -1
 
-            myret = True
+    '        myret = True
 
-        End If
-        Return myret
-    End Function
+    '    End If
+    '    Return myret
+    'End Function
 
     Public Function save() As Boolean Implements IController.save
         Dim myret As Boolean = False
@@ -121,7 +125,7 @@
             Return BS.Filter
         End Get
         Set(ByVal value As String)
-            BS.Filter = String.Format(value)
+            BS.Filter = String.Format(Model.FilterField, value)
         End Set
     End Property
     Public Function GetCurrentRecord() As DataRowView Implements IToolbarAction.GetCurrentRecord

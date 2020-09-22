@@ -3,11 +3,16 @@
 Public Class CMMFModel
     Implements IModel
 
-
+    Public Property cmmf As String
+    Public Property localdescription As String
+    Public Property commercialcode As String
+    Public Property brand As String
+    Public Property pricehkd As String
+    Public Property priceusd As String
 
     Public ReadOnly Property FilterField
         Get
-            Return ""
+            Return "[cmmfstring] like '%{0}%' or [localdescription] like '%{0}%' or [commercialcode] like '%{0}%'"
         End Get
     End Property
 
@@ -26,7 +31,7 @@ Public Class CMMFModel
 
     Private Function GetSqlstr(ByVal criteria) As String
         Dim sb As New StringBuilder
-        sb.Append(String.Format("select u.*,u.cmmf::character varying as cmmfstring,coalesce(cp.pricehkd,0) as price from {0} {1} u left join marketing.cmmfprice cp on cp.cmmf = u.cmmf ", TableName, criteria))
+        sb.Append(String.Format("select u.*,u.cmmf::character varying as cmmfstring,coalesce(cp.pricehkd,0) as price,coalesce(cp.priceusd,0) as priceusd from {0} {1} u left join marketing.cmmfprice cp on cp.cmmf = u.cmmf ", TableName, criteria))
         Return sb.ToString
     End Function
 
@@ -63,10 +68,15 @@ Public Class CMMFModel
             Dim sqlstr As String = String.Empty
 
             sqlstr = "marketing.sp_insertcmmf"
+
             dataadapter.InsertCommand = factory.CreateCommand(sqlstr, conn)
-            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "commercialcode", DataRowVersion.Current))
-            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "localdescription", DataRowVersion.Current))
-            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "cmmf", ParameterDirection.InputOutput))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "cmmf", DataRowVersion.Current))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "commercialcode", DataRowVersion.Current))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "localdescription", DataRowVersion.Current))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "brand", DataRowVersion.Current))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Decimal, 0, "price", DataRowVersion.Current))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Decimal, 0, "priceusd", DataRowVersion.Current))
+
             dataadapter.InsertCommand.CommandType = CommandType.StoredProcedure
 
             sqlstr = "marketing.sp_updatecmmf"
@@ -74,7 +84,10 @@ Public Class CMMFModel
             dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "cmmf", DataRowVersion.Original))
             dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "cmmf", DataRowVersion.Current))
             dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "commercialcode", DataRowVersion.Current))
-            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "localdescription", DataRowVersion.Current))
+            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "localdescription", DataRowVersion.Current))
+            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "brand", DataRowVersion.Current))
+            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Decimal, 0, "price", DataRowVersion.Current))
+            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Decimal, 0, "priceusd", DataRowVersion.Current))
             dataadapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
             sqlstr = "marketing.sp_deletecmmf"

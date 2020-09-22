@@ -87,6 +87,7 @@
     <Compile Include="Class\Adapter\DbFactory.vb" />
     <Compile Include="Class\Adapter\ParamAdapter.vb" />
     <Compile Include="Class\ADPrincipalContext.vb" />
+    <Compile Include="Class\Controller\BPAddressController.vb" />
     <Compile Include="Class\Controller\BPartnerController.vb" />
     <Compile Include="Class\Controller\CMMFController.vb" />
     <Compile Include="Class\Controller\ExpensesTypeController.vb" />
@@ -102,6 +103,7 @@
     <Compile Include="Class\Interface\IToolbarAction.vb" />
     <Compile Include="Class\ItemCreation.vb" />
     <Compile Include="Class\Logger.vb" />
+    <Compile Include="Class\Model\BPAddressModel.vb" />
     <Compile Include="Class\Model\BPartnerModel.vb" />
     <Compile Include="Class\Model\CMMFModel.vb" />
     <Compile Include="Class\Model\ExpensesModel.vb" />
@@ -147,10 +149,16 @@
     <Compile Include="FormMenu.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\DialogAddUpdProjectRequest.Designer.vb">
-      <DependentUpon>DialogAddUpdProjectRequest.vb</DependentUpon>
+    <Compile Include="Form\DialogAddUpdBPAddress.Designer.vb">
+      <DependentUpon>DialogAddUpdBPAddress.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form\DialogAddUpdProjectRequest.vb">
+    <Compile Include="Form\DialogAddUpdBPAddress.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogAddUpdProductRequest.Designer.vb">
+      <DependentUpon>DialogAddUpdProductRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogAddUpdProductRequest.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\DialogAddUpdUser.Designer.vb">
@@ -169,6 +177,24 @@
       <DependentUpon>DialogProjectRequest.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\DialogProjectRequest.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormBPAddress.Designer.vb">
+      <DependentUpon>FormBPAddress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormBPAddress.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormBPartner.Designer.vb">
+      <DependentUpon>FormBPartner.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormBPartner.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormCMMF.Designer.vb">
+      <DependentUpon>FormCMMF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormCMMF.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormFindProductRequest.Designer.vb">
@@ -213,6 +239,12 @@
     <Compile Include="Form\FormUser.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -239,8 +271,11 @@
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\DialogAddUpdProjectRequest.resx">
-      <DependentUpon>DialogAddUpdProjectRequest.vb</DependentUpon>
+    <EmbeddedResource Include="Form\DialogAddUpdBPAddress.resx">
+      <DependentUpon>DialogAddUpdBPAddress.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogAddUpdProductRequest.resx">
+      <DependentUpon>DialogAddUpdProductRequest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\DialogAddUpdUser.resx">
       <DependentUpon>DialogAddUpdUser.vb</DependentUpon>
@@ -250,6 +285,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\DialogProjectRequest.resx">
       <DependentUpon>DialogProjectRequest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormBPAddress.resx">
+      <DependentUpon>FormBPAddress.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormBPartner.resx">
+      <DependentUpon>FormBPartner.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormCMMF.resx">
+      <DependentUpon>FormCMMF.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormFindProductRequest.resx">
       <DependentUpon>FormFindProductRequest.vb</DependentUpon>
@@ -272,6 +316,9 @@
     <EmbeddedResource Include="Form\FormUser.resx">
       <DependentUpon>FormUser.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -289,7 +336,9 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

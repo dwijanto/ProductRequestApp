@@ -38,7 +38,7 @@
         DTLDrv.Item("createddate") = Now
 
 
-        Dim myform = New DialogAddUpdProjectRequest(DTLDrv, CMMFBS, ExpensesTypeBS)
+        Dim myform = New DialogAddUpdProductRequest(DTLDrv, CMMFBS, ExpensesTypeBS)
         RemoveHandler myform.RefreshDataGridView, AddressOf RefreshDataGridView
         AddHandler myform.RefreshDataGridView, AddressOf RefreshDataGridView
 
@@ -93,7 +93,7 @@
 
     Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) 'Handles DataGridView1.CellDoubleClick
         Dim dtldrv As DataRowView = DTLBS.Current
-        Dim myform = New DialogAddUpdProjectRequest(dtldrv, CMMFBS, ExpensesTypeBS)
+        Dim myform = New DialogAddUpdProductRequest(dtldrv, CMMFBS, ExpensesTypeBS)
         RemoveHandler myform.RefreshDataGridView, AddressOf RefreshDataGridView
         AddHandler myform.RefreshDataGridView, AddressOf RefreshDataGridView
 

@@ -1,12 +1,14 @@
 ﻿Imports Npgsql
+Imports System.IO
+
 Public Class PostgreSQLFactory
     Inherits DbFactory
 
     Private myadapter As NpgsqlDataAdapter
-
+    Private CopyIn1 As NpgsqlCopyIn
     Dim conninfo As New NpgsqlConnectionStringBuilder
 
-    Public Overrides ReadOnly Property GetUserName As String       
+    Public Overrides ReadOnly Property GetUserName As String
         Get
             conninfo.ConnectionString = ConnectionString
             Return conninfo.UserName
@@ -122,6 +124,48 @@ Public Class PostgreSQLFactory
         parm.SourceColumn = sourcecolumn
         parm.Direction = paramInputOutput
         Return parm
+    End Function
+
+    Public Overloads Overrides Function copy(ByVal sqlstr As String, ByVal InputString As String, Optional ByRef result As Boolean = False) As String
+        result = False
+        Dim myReturn As String = ""
+        'Convert string to MemoryStream
+        'Dim MemoryStream1 As New IO.MemoryStream(System.Text.Encoding.ASCII.GetBytes(InputString.Replace("\", "\\")))
+        'Dim MemoryStream1 As New IO.MemoryStream(System.Text.Encoding.Default.GetBytes(InputString))
+        Dim MemoryStream1 As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(InputString))
+        Dim buf(9) As Byte
+        Dim CopyInStream As Stream = Nothing
+        Dim i As Long
+        Using conn = New NpgsqlConnection(ConnectionString)
+            conn.Open()
+            Using command = New NpgsqlCommand(sqlstr, conn)
+                CopyIn1 = New NpgsqlCopyIn(command, conn)
+                Try
+                    CopyIn1.Start()
+                    CopyInStream = CopyIn1.CopyStream
+                    i = MemoryStream1.Read(buf, 0, buf.Length)
+                    While i > 0
+                        CopyInStream.Write(buf, 0, i)
+                        i = MemoryStream1.Read(buf, 0, buf.Length)
+                        Application.DoEvents()
+                    End While
+                    CopyInStream.Close()
+                    result = True
+                Catch ex As NpgsqlException
+                    Try
+                        CopyIn1.Cancel("Undo Copy")
+                        myReturn = ex.Message & vbCrLf & ex.Detail & vbCrLf & ex.Where
+                    Catch ex2 As NpgsqlException
+                        If ex2.Message.Contains("Undo Copy") Then
+                            myReturn = ex2.Message & ex.Where
+                        End If
+                    End Try
+                End Try
+
+            End Using
+        End Using
+
+        Return myReturn
     End Function
 End Class
 

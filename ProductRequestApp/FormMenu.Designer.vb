@@ -34,10 +34,14 @@ Partial Class FormMenu
         Me.ParameterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CMMFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BPartnerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BPartnerAddressToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RBACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductRequestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UserManualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
@@ -77,7 +81,7 @@ Partial Class FormMenu
         'MenuStrip1
         '
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionsToolStripMenuItem, Me.MasterToolStripMenuItem, Me.AdminToolStripMenuItem, Me.ReportToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionsToolStripMenuItem, Me.MasterToolStripMenuItem, Me.AdminToolStripMenuItem, Me.ReportToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(556, 24)
@@ -111,7 +115,7 @@ Partial Class FormMenu
         '
         'MasterToolStripMenuItem
         '
-        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.CMMFToolStripMenuItem})
+        Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ParameterToolStripMenuItem, Me.UserToolStripMenuItem, Me.CMMFToolStripMenuItem, Me.BPartnerToolStripMenuItem, Me.BPartnerAddressToolStripMenuItem})
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
         Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
         Me.MasterToolStripMenuItem.Text = "Master"
@@ -119,22 +123,37 @@ Partial Class FormMenu
         'ParameterToolStripMenuItem
         '
         Me.ParameterToolStripMenuItem.Name = "ParameterToolStripMenuItem"
-        Me.ParameterToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.ParameterToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.ParameterToolStripMenuItem.Tag = "FormParameters"
         Me.ParameterToolStripMenuItem.Text = "Parameter"
         '
         'UserToolStripMenuItem
         '
         Me.UserToolStripMenuItem.Name = "UserToolStripMenuItem"
-        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.UserToolStripMenuItem.Tag = "FormUser"
         Me.UserToolStripMenuItem.Text = "User"
         '
         'CMMFToolStripMenuItem
         '
         Me.CMMFToolStripMenuItem.Name = "CMMFToolStripMenuItem"
-        Me.CMMFToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.CMMFToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.CMMFToolStripMenuItem.Tag = "FormCMMF"
         Me.CMMFToolStripMenuItem.Text = "CMMF"
+        '
+        'BPartnerToolStripMenuItem
+        '
+        Me.BPartnerToolStripMenuItem.Name = "BPartnerToolStripMenuItem"
+        Me.BPartnerToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.BPartnerToolStripMenuItem.Tag = "FormBPartner"
+        Me.BPartnerToolStripMenuItem.Text = "BPartner"
+        '
+        'BPartnerAddressToolStripMenuItem
+        '
+        Me.BPartnerAddressToolStripMenuItem.Name = "BPartnerAddressToolStripMenuItem"
+        Me.BPartnerAddressToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.BPartnerAddressToolStripMenuItem.Tag = "FormBPAddress"
+        Me.BPartnerAddressToolStripMenuItem.Text = "BPartner Address"
         '
         'AdminToolStripMenuItem
         '
@@ -162,6 +181,19 @@ Partial Class FormMenu
         Me.ProductRequestToolStripMenuItem.Name = "ProductRequestToolStripMenuItem"
         Me.ProductRequestToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.ProductRequestToolStripMenuItem.Text = "Product Request"
+        '
+        'HelpToolStripMenuItem
+        '
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UserManualToolStripMenuItem})
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Text = "Help"
+        '
+        'UserManualToolStripMenuItem
+        '
+        Me.UserManualToolStripMenuItem.Name = "UserManualToolStripMenuItem"
+        Me.UserManualToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.UserManualToolStripMenuItem.Text = "User Manual"
         '
         'FormMenu
         '
@@ -199,5 +231,9 @@ Partial Class FormMenu
     Friend WithEvents ReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ProductRequestToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FindProductRequestToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents UserManualToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BPartnerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BPartnerAddressToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

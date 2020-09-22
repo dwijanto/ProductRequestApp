@@ -1,6 +1,6 @@
 ﻿Imports System.Windows.Forms
 
-Public Class DialogAddUpdProjectRequest
+Public Class DialogAddUpdProductRequest
     Dim drv As DataRowView
     Dim CMMFBS As BindingSource
     Dim ExpensesTypeBS As BindingSource
@@ -22,7 +22,7 @@ Public Class DialogAddUpdProjectRequest
             Me.DialogResult = System.Windows.Forms.DialogResult.OK
             Me.Close()
         End If
-       
+
     End Sub
 
     Public Overloads Function validate() As Boolean
@@ -72,11 +72,11 @@ Public Class DialogAddUpdProjectRequest
             TextBox4.DataBindings.Add(New Binding("Text", drv, "expensesname", True, DataSourceUpdateMode.OnPropertyChanged, ""))
         Catch ex As Exception
             MessageBox.Show(ex.Message)
-        End Try       
+        End Try
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim myhelper As New DialogHelper(ExpensesTypeBS)       
+        Dim myhelper As New DialogHelper(ExpensesTypeBS)
         myhelper.DataGridView1.Columns(0).DataPropertyName = "expensesacc"
         myhelper.DataGridView1.Columns(0).HeaderText = "Expenses Account"
         myhelper.DataGridView1.Columns(1).DataPropertyName = "expensesname"
@@ -109,9 +109,9 @@ Public Class DialogAddUpdProjectRequest
             drv.Item("localdescription") = mydrv.item("localdescription")
             drv.Item("commercialcode") = mydrv.item("commercialcode")
             drv.Item("price") = mydrv.item("price")
-            drv.Item("cmmf") = mydrv.item("cmmf")            
+            drv.Item("cmmf") = mydrv.item("cmmf")
         End If
-        
+
     End Sub
 
 

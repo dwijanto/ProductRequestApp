@@ -113,4 +113,7 @@ Public Class SqlFactory
             Return Nothing
         End Get
     End Property
+    Public Overrides Function Copy(sqlstr As String, InputString As String, Optional ByRef result As Boolean = False) As String
+        Return ""
+    End Function
 End Class

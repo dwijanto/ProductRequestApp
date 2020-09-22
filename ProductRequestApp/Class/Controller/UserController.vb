@@ -20,6 +20,7 @@
     Dim DS As DataSet
     Public BS As BindingSource
 
+
     Public Sub New()
         MyBase.New()
         tableName = "marketing.user" 'tablename
@@ -64,7 +65,10 @@
             DS.Tables(0).Columns("id").AutoIncrementSeed = -1
             DS.Tables(0).Columns("id").AutoIncrementStep = -1
             BS = New BindingSource
+
+
             BS.DataSource = DS.Tables(0)
+           
             myret = True
         End If
         Return myret

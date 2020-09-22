@@ -37,7 +37,7 @@ Public Class ProductRequestModel
         '                        "left join marketing.bpartner bp on bp.id = hd.bpartnerid {0};", criteria))
         sb.Append(String.Format("select *,bp.bpname as bpartnername,coalesce(bpa.line1,'') || coalesce(bpa.line2,'') || coalesce(bpa.line3,'') as bpartneraddress,bp.bpcode,bp.bpcode || ' - ' || bp.bpname || ' (' || bpa.addressid || ')' as bpartnerfullname,bpa.region,bpa.country ,us.email as applicantemail,up.username as approvalname,marketing.getapprovaldate(hd.id) as approvaldate " &
                                 " from marketing.prhd hd left join marketing.bpaddress bpa on bpa.id = hd.bpartnerid left join marketing.bpartner bp on bp.id = bpa.bpid left join marketing.user us on us.userid = hd.createdby left join marketing.user up on up.userid = hd.deptapproval {0};", criteria))
-        sb.Append(String.Format("select dt.*,c.commercialcode,c.localdescription,e.expensesname,coalesce(dt.price * dt.qty,0) as total from marketing.prdt dt" &
+        sb.Append(String.Format("select dt.*,c.commercialcode,c.localdescription,e.expensesname,e.expensesacc,coalesce(dt.price * dt.qty,0) as total from marketing.prdt dt" &
                                 " inner join marketing.prhd hd on hd.id = dt.prhdid" &
                                 " left join marketing.cmmf c on c.cmmf = dt.cmmf " &
                                 " left join marketing.expensestype e on e.id = dt.expensestypeid " &

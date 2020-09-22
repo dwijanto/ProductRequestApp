@@ -89,6 +89,10 @@ Public Class FormMenu
         AddHandler RBACToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
         AddHandler UserToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
         AddHandler ParameterToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler CMMFToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler BPartnerToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+        AddHandler BPartnerAddressToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+
         ActionsToolStripMenuItem.Visible = User.can("View Actions")
         FindProductRequestToolStripMenuItem.Visible = User.can("Create Product Request") And (DirectCast(User.identity, UserController).deptid = DeptEnum.MarketingHK Or DirectCast(User.identity, UserController).deptid = DeptEnum.SalesHK) 'User with deptid in Sales HK and Marketing HK
         CreateProductRequestToolStripMenuItem.Visible = User.can("Create Product Request") And (DirectCast(User.identity, UserController).deptid = DeptEnum.MarketingHK Or DirectCast(User.identity, UserController).deptid = DeptEnum.SalesHK) 'User with deptid in Sales HK and Marketing HK
@@ -134,5 +138,28 @@ Public Class FormMenu
     Private Sub ProductRequestToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductRequestToolStripMenuItem.Click
         Dim myform As New FormProductRequestReport
         myform.Show()
+    End Sub
+
+    Private Sub CMMFToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CMMFToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub UserManualToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserManualToolStripMenuItem.Click
+        Dim p As New System.Diagnostics.Process        
+        p.StartInfo.FileName = Application.StartupPath & "\Help\ProductRequestHelp.pdf"
+        Try
+            p.Start()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub BPartnerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BPartnerToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub BPartnerAddressToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BPartnerAddressToolStripMenuItem.Click
+
     End Sub
 End Class

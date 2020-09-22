@@ -33,8 +33,8 @@ Public Class FormMyTasks
             HistoryCriteria = String.Format(" where status >= {0}", Int(ProductRequestStatusEnum.StatusCompleted))
         ElseIf User.can("View Supply Chain TW") Then
         Else
-            MyTasksCriteria = String.Format("where ((deptapproval = '{0}' and (status = {1} or status = {2})) or (mdapproval = '{0}' and status = 3)) ", DirectCast(User.identity, UserController).userid, Int(ProductRequestStatusEnum.StatusNew), Int(ProductRequestStatusEnum.StatusResubmit))
-            HistoryCriteria = String.Format("where ((deptapproval = '{0}' and status > 1) or (mdapproval = '{0}' and status > 3) or(createdby = '{0}' and  status > 0)) ", DirectCast(User.identity, UserController).userid)
+            MyTasksCriteria = String.Format("where ((deptapproval = '{0}' and (status = {1} or status = {2})) or (mdapproval = '{0}' and status = 3)) ", DirectCast(User.identity, UserController).username, Int(ProductRequestStatusEnum.StatusNew), Int(ProductRequestStatusEnum.StatusResubmit))
+            HistoryCriteria = String.Format("where ((deptapproval = '{1}' and status > 1) or (mdapproval = '{1}' and status > 3) or(createdby = '{0}' and  status > 0)) ", DirectCast(User.identity, UserController).userid, DirectCast(User.identity, UserController).username)
         End If
         Try
             DS = New DataSet
@@ -104,5 +104,9 @@ Public Class FormMyTasks
         If myform.IsModified Then
             loaddata()
         End If
+    End Sub
+
+    Private Sub ToolStripTextBox1_Click(sender As Object, e As EventArgs) Handles ToolStripTextBox1.Click
+
     End Sub
 End Class

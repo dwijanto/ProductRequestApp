@@ -101,7 +101,7 @@ Partial Class FormProductRequest
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(1048, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(1079, 17)
         Me.ToolStripStatusLabel2.Spring = True
         Me.ToolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -206,7 +206,7 @@ Partial Class FormProductRequest
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripSeparator1, Me.ToolStripButtonCommit, Me.ToolStripButtonSubmit, Me.ToolStripButtonReSubmit, Me.ToolStripButtonValidate, Me.ToolStripButtonStsCancelled, Me.ToolStripButtonReject, Me.ToolStripButtonComplete})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(604, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(585, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'ToolStripButton1
@@ -229,8 +229,8 @@ Partial Class FormProductRequest
         Me.ToolStripButtonCommit.Image = CType(resources.GetObject("ToolStripButtonCommit.Image"), System.Drawing.Image)
         Me.ToolStripButtonCommit.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonCommit.Name = "ToolStripButtonCommit"
-        Me.ToolStripButtonCommit.Size = New System.Drawing.Size(55, 22)
-        Me.ToolStripButtonCommit.Text = "Commit"
+        Me.ToolStripButtonCommit.Size = New System.Drawing.Size(37, 22)
+        Me.ToolStripButtonCommit.Text = "Draft"
         '
         'ToolStripButtonSubmit
         '
@@ -256,7 +256,7 @@ Partial Class FormProductRequest
         Me.ToolStripButtonValidate.Image = CType(resources.GetObject("ToolStripButtonValidate.Image"), System.Drawing.Image)
         Me.ToolStripButtonValidate.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonValidate.Name = "ToolStripButtonValidate"
-        Me.ToolStripButtonValidate.Size = New System.Drawing.Size(53, 22)
+        Me.ToolStripButtonValidate.Size = New System.Drawing.Size(52, 22)
         Me.ToolStripButtonValidate.Text = "Validate"
         '
         'ToolStripButtonStsCancelled

@@ -42,6 +42,7 @@
     Public MustOverride ReadOnly Property GetDataBaseName As String
     Public MustOverride ReadOnly Property GetUserName As String
     Public MustOverride ReadOnly Property GetPassword As String
+    Public MustOverride Function Copy(ByVal sqlstr As String, ByVal InputString As String, Optional ByRef result As Boolean = False) As String
 End Class
 
 'Public Delegate Sub WriteEventHandler(Of T)(ByVal o As T, ByVal command As IDbCommand)

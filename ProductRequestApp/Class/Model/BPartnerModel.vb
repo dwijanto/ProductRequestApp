@@ -6,7 +6,7 @@ Public Class BPartnerModel
 
     Public ReadOnly Property FilterField
         Get
-            Return ""
+            Return "[bpcode] like '%{0}%' or [bpname] like '%{0}%' or [contactname] like '%{0}%'"
         End Get
     End Property
 
@@ -44,6 +44,17 @@ Public Class BPartnerModel
         Return ExpensesTypeBS
     End Function
 
+    Public Function GetBPBS() As BindingSource
+        Dim ds As New DataSet
+        Dim BPBS As New BindingSource
+        Dim sqlstr = "select bp.id, bp.bpname,bp.bpcode,bp.bpcode || ' - ' || bp.bpname  as bpartnerfullname  " &
+                     " from marketing.bpartner bp order by bpcode"
+        ds = DataAccess.GetDataSet(sqlstr, CommandType.Text, Nothing)
+        ds.Tables(0).TableName = TableName
+        BPBS.DataSource = ds.Tables(0)
+        Return BPBS
+    End Function
+
     Public Function LoadData(ByRef DS As DataSet, ByVal criteria As String) As Boolean
         Dim sqlstr = GetSqlstr("")
         DS = DataAccess.GetDataSet(sqlstr, CommandType.Text, Nothing)
@@ -61,30 +72,30 @@ Public Class BPartnerModel
             Dim dataadapter = factory.CreateAdapter
             Dim sqlstr As String = String.Empty
 
-            'sqlstr = "marketing.sp_insertexpensestype"
-            'dataadapter.InsertCommand = factory.CreateCommand(sqlstr, conn)
-            'dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "deptid", DataRowVersion.Current))
-            'dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "expensesacc", DataRowVersion.Current))
-            'dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "expensesname", DataRowVersion.Current))
-            'dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "id", ParameterDirection.InputOutput))
-            'dataadapter.InsertCommand.CommandType = CommandType.StoredProcedure
+            sqlstr = "marketing.sp_insertbpartner"
+            dataadapter.InsertCommand = factory.CreateCommand(sqlstr, conn)
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "bpcode", DataRowVersion.Current))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "bpname", DataRowVersion.Current))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "customercode", DataRowVersion.Current))
+            dataadapter.InsertCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "id", ParameterDirection.InputOutput))
+            dataadapter.InsertCommand.CommandType = CommandType.StoredProcedure
 
-            'sqlstr = "marketing.sp_updateexpensestype"
-            'dataadapter.UpdateCommand = factory.CreateCommand(sqlstr, conn)
-            'dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "id", DataRowVersion.Original))
-            'dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Int32, 0, "deptid", DataRowVersion.Current))
-            'dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "expensesacc", DataRowVersion.Current))
-            'dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "expensesname", DataRowVersion.Current))
-            'dataadapter.UpdateCommand.CommandType = CommandType.StoredProcedure
+            sqlstr = "marketing.sp_updatebpartner"
+            dataadapter.UpdateCommand = factory.CreateCommand(sqlstr, conn)
+            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "id", DataRowVersion.Original))
+            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "bpcode", DataRowVersion.Current))
+            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "bpname", DataRowVersion.Current))
+            dataadapter.UpdateCommand.Parameters.Add(factory.CreateParameter("", DbType.String, 0, "customercode", DataRowVersion.Current))
+            dataadapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
-            'sqlstr = "marketing.sp_deleteexpensestype"
-            'dataadapter.DeleteCommand = factory.CreateCommand(sqlstr, conn)
-            'dataadapter.DeleteCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "id", DataRowVersion.Original))
-            'dataadapter.DeleteCommand.CommandType = CommandType.StoredProcedure
+            sqlstr = "marketing.sp_deletebpartner"
+            dataadapter.DeleteCommand = factory.CreateCommand(sqlstr, conn)
+            dataadapter.DeleteCommand.Parameters.Add(factory.CreateParameter("", DbType.Int64, 0, "id", DataRowVersion.Original))
+            dataadapter.DeleteCommand.CommandType = CommandType.StoredProcedure
 
-            'dataadapter.InsertCommand.Transaction = mytransaction
-            'dataadapter.UpdateCommand.Transaction = mytransaction
-            'dataadapter.DeleteCommand.Transaction = mytransaction
+            dataadapter.InsertCommand.Transaction = mytransaction
+            dataadapter.UpdateCommand.Transaction = mytransaction
+            dataadapter.DeleteCommand.Transaction = mytransaction
 
             mye.ra = factory.Update(mye.dataset.Tables(TableName))
             mytransaction.Commit()

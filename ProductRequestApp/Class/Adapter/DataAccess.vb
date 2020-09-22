@@ -226,4 +226,8 @@ Public Class DataAccess
         End If
     End Function
 
+    Public Shared Function Copy(ByVal sqlstr As String, ByVal InputString As String, Optional ByRef result As Boolean = False) As String
+        Return factory.Copy(sqlstr, InputString, result)
+    End Function
+
 End Class

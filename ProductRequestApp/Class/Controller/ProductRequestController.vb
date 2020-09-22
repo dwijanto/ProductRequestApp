@@ -90,8 +90,9 @@
 
     Public Function save() As Boolean Implements IController.save
         Dim myret As Boolean = False
-
         BS.EndEdit()
+        DTLBS.EndEdit()
+        ActionBS.EndEdit()
 
         Dim ds2 As DataSet = DS.GetChanges()
         If Not IsNothing(ds2) Then

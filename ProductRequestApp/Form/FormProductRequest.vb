@@ -160,19 +160,30 @@ Public Class FormProductRequest
                                     UcProductRequest1.RemoveHandlerDataGridView1CellDoubleClick()
                                 End If
                             Case ProductRequestApp.TxEnum.ValidateRecord
-                                UcProductRequest1.GroupBox1.Enabled = False
-                                ToolStripButtonValidate.Visible = True
-                                ToolStripButtonReject.Visible = True
-                                UcProductRequest1.DataGridView1.ContextMenuStrip = Nothing
-                                UcProductRequest1.RemoveHandlerDataGridView1CellDoubleClick()
-                                If User.can("Validate Confirmed Qty") Then
-                                    UcProductRequest1.GroupBox1.Enabled = True
-                                    UcProductRequest1.DataGridView1.Columns(8).ReadOnly = False
-                                    For Each DRV As DataRowView In DTLBS.List
-                                        DRV.Item("confirmedqty") = DRV.Item("qty")
-                                    Next
-                                    UcProductRequest1.EnabledDeliveryDate()
+                                'Check Status if rejected -> submit or cancel
+
+                                If DRV.Row.Item("status") = ProductRequestStatusEnum.StatusRejectedbyDirector Or
+                                    DRV.Row.Item("status") = ProductRequestStatusEnum.StatusRejectedbyMDirector Then
+                                    ToolStripButtonReSubmit.Visible = True
+                                    ToolStripButtonStsCancelled.Visible = True
+                                Else
+                                    UcProductRequest1.GroupBox1.Enabled = False
+                                    ToolStripButtonValidate.Visible = True
+                                    ToolStripButtonReject.Visible = True
+                                    UcProductRequest1.DataGridView1.ContextMenuStrip = Nothing
+                                    UcProductRequest1.RemoveHandlerDataGridView1CellDoubleClick()
+                                    If User.can("Validate Confirmed Qty") Then
+                                        UcProductRequest1.GroupBox1.Enabled = True
+                                        UcProductRequest1.DataGridView1.Columns(8).ReadOnly = False
+                                        For Each DRV As DataRowView In DTLBS.List
+                                            DRV.Item("confirmedqty") = DRV.Item("qty")
+                                        Next
+                                        UcProductRequest1.EnabledDeliveryDate()
+                                    End If
                                 End If
+
+
+                                
                                 'Dim myRbac As New DbManager
                                 'If myRbac.isAssignedto(User.getId, "Supply Chain HK") And (DRV.Item("status") = ProductRequestStatusEnum.StatusValidatedbyDirector Or DRV.Item("status") = ProductRequestStatusEnum.StatusValidatedbyMDirector) Then
                                 '    'put default value for confirmation
@@ -188,7 +199,7 @@ Public Class FormProductRequest
                         Dim CMMFController1 As New CMMFController
                         Dim BParnerController1 As New BPartnerController
                         Dim ExpensesTypeController1 As New ExpensesTypeController                   
-                        Dim ExpensesCriteria As String = String.Format("where deptid = {0}", DRV.Row.Item("deptid"))
+                        Dim ExpensesCriteria As String = String.Format("where deptid = {0} and isactive", DRV.Row.Item("deptid"))
 
                         'Check Userid Role and Status
 
@@ -223,7 +234,7 @@ Public Class FormProductRequest
                 If MessageBox.Show("Do you want to submit this record?", "Submit", System.Windows.Forms.MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK Then
                     Dim userid = DirectCast(User.identity, UserController).userid
                     DRV.Row.Item("status") = ProductRequestStatusEnum.StatusNew
-                    DRV.Row.Item("deptapproval") = DeptApproval.ID
+                    DRV.Row.Item("deptapproval") = DeptApproval.Name
                     setApproval(DRV.Item("status"), "New", "")
                 End If
             Else
@@ -258,7 +269,7 @@ Public Class FormProductRequest
                             StatusName = "Validated by Director"
                             'If amount more than set drv.row.item("mdapproval")
                             If UcProductRequest1.getTotal > LimitHK Then
-                                DRV.Row.Item("mdapproval") = MDApproval.ID
+                                DRV.Row.Item("mdapproval") = MDApproval.Name
                             End If
                         Case ProductRequestStatusEnum.StatusValidatedbyMDirector
                             StatusName = "Validated by MDirector"
@@ -484,8 +495,11 @@ Public Class FormProductRequest
             osheet.Cells(detailstartrow, 4).value = mydrv.Row.Item("cmmf")
             osheet.Cells(detailstartrow, 5).value = mydrv.Row.Item("localdescription")
             osheet.Cells(detailstartrow, 7).value = mydrv.Row.Item("confirmedqty")
-            osheet.Cells(detailstartrow, 8).value = mydrv.Row.Item("confirmedqty") * mydrv.Row.Item("price")
-            osheet.Cells(detailstartrow, 9).value = mydrv.Row.Item("expensesname")
+            If Not IsDBNull(mydrv.Row.Item("confirmedqty")) And Not IsDBNull(mydrv.Row.Item("price")) Then
+                osheet.Cells(detailstartrow, 8).value = mydrv.Row.Item("confirmedqty") * mydrv.Row.Item("price")
+            End If
+            'osheet.Cells(detailstartrow, 8).value = mydrv.Row.Item("confirmedqty") * mydrv.Row.Item("price")
+            osheet.Cells(detailstartrow, 9).value = String.Format("{0} - {1}", mydrv.Row.Item("expensesacc"), mydrv.Row.Item("expensesname"))
             osheet.Cells(detailstartrow, 10).value = mydrv.Row.Item("remarks")
             detailstartrow += 1
             i += 1

@@ -134,4 +134,8 @@ Public Class FormUser
     Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
         UpdateToolStripButton.PerformClick()
     End Sub
+
+    Private Sub ToolStripTextBox1_Click(sender As Object, e As EventArgs) Handles ToolStripTextBox1.Click
+
+    End Sub
 End Class

@@ -7,7 +7,6 @@ C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\Pro
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.UCDGVParams.resources
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.UCProductRequest.resources
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.FormMenu.resources
-C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.DialogAddUpdProjectRequest.resources
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.DialogAddUpdUser.resources
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.DialogHelper.resources
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.DialogProjectRequest.resources
@@ -24,3 +23,9 @@ C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\Pro
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.pdb
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\bin\Debug\npgsql.dll
 C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.FormProductRequestReport.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.DialogAddUpdProductRequest.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.FormCMMF.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.SplashScreen1.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.FormBPartner.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.DialogAddUpdBPAddress.resources
+C:\Users\dlie\Documents\GitHub\ProductRequestApp\ProductRequestApp\obj\Debug\ProductRequestApp.FormBPAddress.resources

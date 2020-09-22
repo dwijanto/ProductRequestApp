@@ -1,0 +1,190 @@
+﻿Imports System.Threading
+Public Class FormCMMF
+    Private Shared myform As FormCMMF
+    Dim myController As CMMFController
+
+    Public Shared Function getInstance()
+        If myform Is Nothing Then
+            myform = New FormCMMF
+        ElseIf myform.IsDisposed Then
+            myform = New FormCMMF
+        End If
+        Return myform
+    End Function
+
+    Dim myThread As New System.Threading.Thread(AddressOf DoWork)
+    Dim drv As DataRowView
+
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
+
+    Private Sub RefreshMYInterface()
+        DataGridView1.Invalidate()
+    End Sub
+
+    Sub DoWork()
+        myController = New CMMFController
+        Try
+            ProgressReport(1, "Loading...Please wait.")
+            If myController.loaddata() Then
+                ProgressReport(4, "Init Data")
+            End If
+            ProgressReport(1, String.Format("Loading...Done. Records {0}", myController.BS.Count))
+        Catch ex As Exception
+            ProgressReport(1, ex.Message)
+        End Try
+
+    End Sub
+    Public Sub ProgressReport(ByVal id As Integer, ByVal message As String)
+        If Me.InvokeRequired Then
+            Dim d As New ProgressReportDelegate(AddressOf ProgressReport)
+            Me.Invoke(d, New Object() {id, message})
+        Else
+            Select Case id
+                Case 1
+                    ToolStripStatusLabel1.Text = message
+                Case 4
+                    DataGridView1.AutoGenerateColumns = False
+                    DataGridView1.DataSource = myController.BS
+                Case 5
+                    ToolStripProgressBar1.Style = ProgressBarStyle.Continuous
+                Case 6
+                    ToolStripProgressBar1.Style = ProgressBarStyle.Marquee
+                Case 8
+                    DoWork()
+            End Select
+        End If
+    End Sub
+
+
+    Private Sub AddNewToolStripButton1_Click(sender As Object, e As EventArgs) Handles AddToolStripButton.Click
+        showTX(TxEnum.NewRecord)
+    End Sub
+
+    Private Sub DeleteToolStripButton2_Click(sender As Object, e As EventArgs) Handles DeleteToolStripButton.Click
+        If Not IsNothing(myController.GetCurrentRecord) Then
+            If MessageBox.Show("Delete this record?", "Delete Record", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK Then
+                For Each drv As DataGridViewRow In DataGridView1.SelectedRows
+                    myController.RemoveAt(drv.Index)
+                Next
+            End If
+        End If
+    End Sub
+
+    Private Sub FormITAssets_Load(sender As Object, e As EventArgs) Handles Me.Load
+        LoadData()
+    End Sub
+
+    Private Sub LoadData()
+        If Not myThread.IsAlive Then
+            ToolStripStatusLabel1.Text = ""
+            myThread = New Thread(AddressOf DoWork)
+            myThread.Start()
+        Else
+            MessageBox.Show("Please wait until the current process is finished.")
+        End If
+    End Sub
+
+    Private Sub RefreshToolStripButton4_Click(sender As Object, e As EventArgs) Handles RefreshToolStripButton.Click
+        LoadData()
+    End Sub
+
+
+
+    Private Sub CommitToolStripButton3_Click(sender As Object, e As EventArgs) Handles CommitToolStripButton.Click
+        'DataGridView1.EndEdit()
+        Me.Validate()
+
+        myController.save()
+    End Sub
+
+
+    Private Sub ToolStripTextBox1_TextChanged(sender As Object, e As EventArgs) Handles ToolStripTextBox1.TextChanged
+        Try
+            myController.ApplyFilter = ToolStripTextBox1.Text
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+    End Sub
+
+
+    Private Sub UpdateToolStripButton_Click(sender As Object, e As EventArgs) Handles UpdateToolStripButton.Click
+        showTX(TxEnum.UpdateRecord)
+    End Sub
+
+    Private Sub showTX(txEnum As TxEnum)
+        'Dim ApprovalBS As New BindingSource
+        'Dim DeptBS As New BindingSource
+        'ApprovalBS.DataSource = myController.getApprovalbs
+        'DeptBS.DataSource = myController.getdeptbs
+        Dim drv As DataRowView = Nothing
+        Select Case txEnum
+            Case ProductRequestApp.TxEnum.NewRecord
+                drv = myController.GetNewRecord
+            Case ProductRequestApp.TxEnum.UpdateRecord
+                drv = myController.GetCurrentRecord
+        End Select
+        drv.BeginEdit()
+
+        'Dim myform = New DialogAddUpdUser(drv, ApprovalBS, DeptBS)
+        'myform.ShowDialog()
+
+    End Sub
+
+    Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
+        UpdateToolStripButton.PerformClick()
+    End Sub
+
+    Private Sub ToolStripTextBox1_Click(sender As Object, e As EventArgs) Handles ToolStripTextBox1.Click
+
+    End Sub
+
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+        If Not myThread.IsAlive Then
+            ToolStripStatusLabel1.Text = ""
+            Dim openFileDialog1 As New OpenFileDialog
+            If openFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                myController.myForm = Me
+                myController.FileNameFullPath = openFileDialog1.FileName
+                myThread = New Thread(AddressOf DoImportFile)                
+                myThread.Start()
+            End If
+
+           
+        Else
+            MessageBox.Show("Please wait until the current process is finished.")
+        End If       
+    End Sub
+
+    'Private Sub DoImportFile()
+    '    'Get Existing Data
+    '    Try
+    '        ProgressReport(6, "")            
+
+    '        If Not myController.doImport() Then
+    '            ProgressReport(1, String.Format("Error: {0}", myController.ErrorMessage))
+    '        End If
+    '        'Refresh Data
+    '        ProgressReport(8, "Refresh Data")
+    '    Catch ex As Exception
+    '        ProgressReport(5, "")
+    '        MessageBox.Show(ex.Message)
+    '    Finally
+    '        ProgressReport(5, "")
+    '    End Try
+
+    'End Sub
+
+    Private Sub DoImportFile()
+        myController.DoImport()
+    End Sub
+
+
+End Class
